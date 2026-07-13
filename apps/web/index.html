@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpenderMarket - Fandom to Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg:#F5EFF8;--card:#FFFFFF;--card-alt:#F0EAF6;
+      --pri:#9B7FC0;--pri-l:#B49AD4;--pri-dim:rgba(155,127,192,0.08);
+      --txt:#2D2440;--txt-m:#7A6F94;--txt-mm:#A9A0BA;
+      --bdr:rgba(155,127,192,0.18);--ok:#6BAF80;--no:#C07078;
+      --sh:0 2px 16px rgba(155,127,192,0.1);
+    }
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);min-height:100vh;line-height:1.6}
+
+    nav{position:sticky;top:0;z-index:100;background:rgba(245,239,248,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
+    .nav-in{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;padding:0 1.5rem}
+    .logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--pri);cursor:pointer}
+    .logo small{font-family:'Inter',sans-serif;font-size:0.55rem;font-weight:400;color:var(--txt-m);display:block;letter-spacing:2px;text-transform:uppercase;margin-top:-2px}
+    .cart-btn{position:relative;background:var(--card-alt);border:1px solid var(--bdr);color:var(--txt);padding:7px 14px;border-radius:10px;cursor:pointer;font-size:0.82rem;font-family:'Inter',sans-serif;transition:all 0.2s;display:flex;align-items:center;gap:5px}
+    .cart-btn:hover{border-color:var(--pri);background:var(--pri-dim)}
+    .cart-badge{position:absolute;top:-5px;right:-5px;background:var(--pri);color:#fff;font-size:0.6rem;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    .hero{text-align:center;padding:2.5rem 1.5rem 1.5rem;background:radial-gradient(ellipse at top,rgba(155,127,192,0.06),transparent 70%)}
+    .hero h1{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--txt);margin-bottom:0.4rem}
+    .hero h1 em{font-style:normal;color:var(--pri)}
+    .hero p{color:var(--txt-m);max-width:580px;margin:0 auto;font-size:0.85rem;line-height:1.7}
+
+    .search{max-width:600px;margin:1.2rem auto 0;position:relative}
+    .search input{width:100%;padding:11px 16px 11px 42px;background:var(--card);border:1px solid var(--bdr);border-radius:12px;color:var(--txt);font-size:0.88rem;font-family:'Inter',sans-serif;outline:none;transition:border 0.2s}
+    .search input::placeholder{color:var(--txt-mm)}
+    .search input:focus{border-color:var(--pri)}
+    .search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--txt-m);fill:none}
+
+    .sec-title{max-width:1280px;margin:1.8rem auto 0.8rem;padding:0 1.5rem;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--txt);font-weight:600}
+
+    .pres-row{max-width:1280px;margin:0 auto 1rem;padding:0 1.5rem;display:flex;gap:0.75rem;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--bdr) transparent;padding-bottom:4px}
+    .pres-card{min-width:170px;max-width:195px;flex-shrink:0;background:var(--card);border:1px solid var(--bdr);border-radius:14px;padding:12px;cursor:pointer;transition:all 0.2s;text-align:center}
+    .pres-card:hover,.pres-card.on{border-color:var(--pri);box-shadow:var(--sh)}
+    .pres-card.on{background:var(--pri-dim)}
+    .pres-card img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--pri);margin:0 auto 8px;display:block}
+    .pres-card h4{font-family:'Playfair Display',serif;font-size:0.78rem;font-weight:600;color:var(--txt);margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .pres-card .brand{font-size:0.6rem;color:var(--pri);font-weight:600;text-transform:uppercase;letter-spacing:0.8px}
+    .pres-card .cnt{font-size:0.6rem;color:var(--txt-m);margin-top:3px}
+
+    .brand-pills{max-width:1280px;margin:0 auto 1rem;padding:0 1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center}
+    .pill{padding:5px 12px;border-radius:20px;background:var(--card);border:1px solid var(--bdr);color:var(--txt-m);cursor:pointer;font-size:0.72rem;font-family:'Inter',sans-serif;transition:all 0.2s;white-space:nowrap}
+    .pill:hover,.pill.on{background:var(--pri);color:#fff;border-color:var(--pri);font-weight:600}
+    .sort-sel{margin-left:auto;padding:5px 10px;background:var(--card);border:1px solid var(--bdr);border-radius:8px;color:var(--txt);font-size:0.72rem;font-family:'Inter',sans-serif;cursor:pointer;outline:none}
+
+    .grid-wrap{max-width:1280px;margin:0 auto;padding:0 1.5rem 3rem}
+    .grid-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem}
+    .res-cnt{font-size:0.78rem;color:var(--txt-m)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem}
+
+    .card{background:var(--card);border-radius:14px;border:1px solid var(--bdr);overflow:hidden;transition:all 0.25s}
+    .card:hover{border-color:var(--pri);box-shadow:var(--sh);transform:translateY(-2px)}
+    .card-img{position:relative;width:100%;height:180px;background:var(--card-alt);overflow:hidden}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
+    .card:hover .card-img img{transform:scale(1.04)}
+
+    .bdg{position:absolute;padding:3px 8px;border-radius:6px;font-size:0.62rem;font-weight:700;letter-spacing:0.2px}
+    .bdg-dsc{top:8px;right:8px;background:var(--no);color:#fff}
+    .bdg-stk{top:8px;left:8px;background:rgba(255,255,255,0.92);backdrop-filter:blur(4px);padding:4px 8px;border-radius:6px;display:flex;align-items:center;gap:5px}
+    .stk-dot{width:7px;height:7px;border-radius:50%;animation:pulse 2s infinite}
+    .stk-dot.ok{background:var(--ok)}.stk-dot.lo{background:var(--no)}
+    .stk-txt{font-size:0.65rem;font-weight:600;color:var(--txt)}
+
+    .bdg-pres{bottom:8px;left:8px;right:8px;background:rgba(255,255,255,0.92);backdrop-filter:blur(6px);border-radius:8px;padding:5px 8px;display:flex;align-items:center;gap:6px}
+    .bdg-pres img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:1.5px solid var(--pri)}
+    .bdg-pres .pn{font-size:0.65rem;font-weight:600;color:var(--txt)}
+    .bdg-pres .pr{font-size:0.55rem;color:var(--pri)}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+    .card-body{padding:12px 14px 14px}
+    .card-brand{font-size:0.6rem;color:var(--pri);font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px}
+    .card-name{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:600;color:var(--txt);line-height:1.3;margin-bottom:2px}
+    .card-ev{font-size:0.65rem;color:var(--txt-m);margin-bottom:8px}
+
+    .price-blk{margin-bottom:8px}
+    .pr-row{display:flex;align-items:baseline;gap:5px;margin-bottom:1px}
+    .pr-lbl{font-size:0.6rem;color:var(--txt-m);min-width:32px}
+    .pr-ofc{text-decoration:line-through;color:var(--txt-mm);font-size:0.75rem}
+    .pr-sale{color:var(--pri);font-size:1.05rem;font-weight:700}
+    .pr-save{display:inline-block;padding:2px 7px;border-radius:5px;background:rgba(107,175,128,0.1);color:var(--ok);font-size:0.6rem;font-weight:600;margin-top:2px}
+
+    .sell-row{display:flex;align-items:center;gap:7px;padding:7px 0;border-top:1px solid var(--bdr);margin-bottom:8px}
+    .sell-av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--pri),var(--pri-l));display:flex;align-items:center;justify-content:center;font-size:0.58rem;font-weight:700;color:#fff;flex-shrink:0}
+    .sell-nm{font-size:0.72rem;font-weight:600;color:var(--txt)}
+    .sell-v{font-size:0.58rem;color:var(--ok)}
+
+    .prog-wrap{margin-bottom:10px}
+    .prog-lbl{font-size:0.6rem;color:var(--txt-m);margin-bottom:3px}
+    .prog-track{width:100%;height:4px;background:var(--card-alt);border-radius:2px;overflow:hidden}
+    .prog-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--pri),var(--pri-l));transition:width 0.6s}
+    .prog-amt{font-size:0.6rem;color:var(--txt-m);margin-top:2px}
+
+    .add-btn{width:100%;padding:9px;background:linear-gradient(135deg,var(--pri),var(--pri-l));border:none;border-radius:9px;color:#fff;font-size:0.82rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:all 0.2s;letter-spacing:0.2px}
+    .add-btn:hover{opacity:0.88;transform:scale(1.01)}
+    .add-btn:disabled{opacity:0.3;cursor:not-allowed;transform:none}
+
+    .ov{position:fixed;inset:0;z-index:200;background:rgba(45,36,64,0.35);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:1.5rem}
+    .ov.show{display:flex}
+    .mdl{background:var(--card);border-radius:18px;border:1px solid var(--bdr);width:100%;max-width:460px;max-height:90vh;overflow-y:auto}
+    .mdl-h{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--bdr);position:sticky;top:0;background:var(--card);z-index:1}
+    .mdl-h h2{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--txt)}
+    .mdl-x{width:28px;height:28px;border-radius:7px;background:var(--card-alt);border:1px solid var(--bdr);color:var(--txt);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    .mdl-x:hover{background:var(--no);border-color:var(--no);color:#fff}
+    .mdl-b{padding:18px}
+
+    .ci{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bdr)}
+    .ci:last-child{border-bottom:none}
+    .ci-img{width:64px;height:64px;border-radius:8px;object-fit:cover;background:var(--card-alt);flex-shrink:0}
+    .ci-info{flex:1}
+    .ci-nm{font-size:0.78rem;font-weight:600;color:var(--txt);margin-bottom:1px}
+    .ci-sell{font-size:0.65rem;color:var(--txt-m);margin-bottom:2px}
+    .ci-pr{font-size:0.9rem;font-weight:700;color:var(--pri)}
+    .ci-qty{display:flex;align-items:center;gap:6px;margin-top:3px}
+    .qbtn{width:24px;height:24px;border-radius:5px;background:var(--card-alt);border:1px solid var(--bdr);color:var(--txt);font-size:0.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif}
+    .qbtn:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+    .ci-rm{background:none;border:none;color:var(--no);font-size:0.68rem;cursor:pointer;padding:2px 0;font-family:'Inter',sans-serif}
+    .ci-rm:hover{text-decoration:underline}
+
+    .ct-sum{padding:14px 18px;border-top:1px solid var(--bdr);background:var(--pri-dim);border-radius:0 0 18px 18px}
+    .ct-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .ct-lbl{font-size:0.85rem;color:var(--txt)}
+    .ct-pr{font-size:1.15rem;font-weight:700;color:var(--pri)}
+    .pay-btn{width:100%;padding:11px;background:linear-gradient(135deg,var(--pri),var(--pri-l));border:none;border-radius:10px;color:#fff;font-size:0.88rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:all 0.2s}
+    .pay-btn:hover{opacity:0.88}
+    .pay-btn:disabled{opacity:0.3;cursor:not-allowed}
+
+    .empty-c{text-align:center;padding:28px 18px;color:var(--txt-m)}
+    .empty-c .ic{font-size:2.2rem;margin-bottom:6px;opacity:0.35}
+    .empty-c p{font-size:0.82rem}
+
+    .qr-sec{text-align:center;padding:22px 18px}
+    .qr-sec h3{font-family:'Playfair Display',serif;font-size:0.95rem;margin-bottom:3px;color:var(--txt)}
+    .qr-sec p{color:var(--txt-m);font-size:0.78rem;margin-bottom:14px}
+    .qr-box{width:190px;height:190px;margin:0 auto 14px;background:#fff;border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:center;border:1px solid var(--bdr)}
+    .qr-g{width:100%;height:100%;display:grid;grid-template-columns:repeat(21,1fr);grid-template-rows:repeat(21,1fr);gap:0}
+    .qc{background:var(--txt)}.qw{background:#fff}
+    .qr-amt{font-size:1.3rem;font-weight:700;color:var(--pri);margin-bottom:3px}
+    .qr-ref{font-size:0.68rem;color:var(--txt-m);margin-bottom:3px}
+    .qr-ph{font-size:0.7rem;color:var(--txt-m);margin-bottom:14px}
+    .cfm-btn{padding:9px 26px;border-radius:9px;background:var(--ok);border:none;color:#fff;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
+    .cfm-btn:hover{opacity:0.88}
+
+    .ok-msg{text-align:center;padding:28px 18px}
+    .ok-msg .ck{width:48px;height:48px;border-radius:50%;background:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:1.2rem;color:#fff}
+    .ok-msg h3{font-family:'Playfair Display',serif;margin-bottom:5px;color:var(--txt)}
+    .ok-msg p{color:var(--txt-m);font-size:0.78rem;margin-bottom:14px}
+
+    .no-res{text-align:center;padding:40px 18px;color:var(--txt-m);grid-column:1/-1}
+    .no-res h3{color:var(--txt);margin-bottom:5px;font-family:'Playfair Display',serif}
+
+    @media(max-width:768px){.hero h1{font-size:1.4rem}.grid{grid-template-columns:1fr}.pres-row{flex-wrap:nowrap}}
+    ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bdr);border-radius:2px}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}.card{animation:fadeUp 0.3s ease forwards}
+  </style>
+</head>
+<body>
+
+<nav><div class="nav-in">
+  <div class="logo" onclick="resetView()">SpenderMarket<small>Fandom to Market</small></div>
+  <button class="cart-btn" onclick="openCart()">&#128722; ตะกร้า<span class="cart-badge" id="cartCount">0</span></button>
+</div></nav>
+
+<div class="hero">
+  <h1>แฟนคลับขายต่อ <em>ของดีราคาโดน</em></h1>
+  <p>ซื้อจากอีเวนต์แบรนด์ โปรเซลล์ ของแถม แล้วนำมาปล่อยต่อในราคาถูกกว่า ทุกชิ้นใบเสร็จรับประกัน</p>
+  <div class="search">
+    <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="searchInput" placeholder="ค้นหาสินค้า, แบรนด์, ชื่องานอีเวนต์..." oninput="filterProducts()">
+  </div>
+</div>
+
+<h2 class="sec-title">&#11088; พรีเซ็นเตอร์ / คนดังที่รีวิว</h2>
+<div class="pres-row" id="presList"></div>
+
+<div class="brand-pills" id="brandPills"></div>
+
+<div class="grid-wrap">
+  <div class="grid-hdr"><span class="res-cnt" id="resCnt"></span></div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="ov" id="cartOv">
+  <div class="mdl">
+    <div class="mdl-h"><h2>&#128722; ตะกร้าสินค้า</h2><button class="mdl-x" onclick="closeCart()">&times;</button></div>
+    <div class="mdl-b" id="cartBody"></div>
+    <div class="ct-sum" id="cartSum" style="display:none">
+      <div class="ct-row"><span class="ct-lbl">รวมทั้งหมด</span><span class="ct-pr" id="cartTotal">฿0</span></div>
+      <button class="pay-btn" onclick="openPay()">ชำระเงินผ่าน PromptPay</button>
+    </div>
+  </div>
+</div>
+
+<div class="ov" id="payOv">
+  <div class="mdl">
+    <div class="mdl-h"><h2>&#128179; ชำระเงิน</h2><button class="mdl-x" onclick="closePay()">&times;</button></div>
+    <div id="payContent"></div>
+  </div>
+</div>
+
+<script>
+const P=[
+  {id:1,name:"วุ้นเส้น วิริยพันธ์",brand:"Mega We Care",role:"พรีเซ็นเตอร์",ig:"@vjunjie",img:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=face"},
+  {id:2,name:"เบลล่า ราณี",brand:"Her Hyness",role:"Brand Endorser",ig:"@bellacampen",img:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&h=200&fit=crop&crop=face"},
+  {id:3,name:"ใหม่ ดาวิกา",brand:"Smooth-E",role:"Brand Ambassador",ig:"@davikah",img:"https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop&crop=face"},
+  {id:4,name:"ปราบ ยุทธชัย",brand:"L'Oreal Paris",role:"Male Ambassador",ig:"@prepp",img:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"},
+  {id:5,name:"มิ้นต์ ชาลิดา",brand:"Garnier",role:"Brand Endorser",ig:"@mint_chalida",img:"https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=face"},
+  {id:6,name:"บัว สโรชา",brand:"CeraVe",role:"Skincare Ambassador",ig:"@buablink",img:"https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop&crop=face"},
+  {id:7,name:"เจนนิเฟอร์ คิ้ม",brand:"Vaseline",role:"Brand Endorser",ig:"@jennifer_kim",img:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face"},
+  {id:8,name:"ก้อง สหรัถ",brand:"Pantene",role:"Hair Expert",ig:"@kong_saharat",img:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=face"},
+];
+
+const S=[
+  {id:1,nm:"FanMart_Bkk",ini:"FM",v:true},
+  {id:2,nm:"MegaDeal_TH",ini:"MD",v:true},
+  {id:3,nm:"BeautyRescue",ini:"BR",v:true},
+  {id:4,nm:"SkincareLover",ini:"SL",v:true},
+  {id:5,nm:"โปรเซลล์ hunter",ini:"PH",v:true},
+  {id:6,nm:"ของดีราคาโดน",ini:"GD",v:true},
+  {id:7,nm:"อีเวนต์Fan",ini:"EF",v:true},
+  {id:8,nm:"ClearanceKing",ini:"CK",v:true},
+  {id:9,nm:"BudgetBuyer",ini:"BB",v:true},
+  {id:10,nm:"สปอยล์ตัวเอง",ini:"SS",v:true},
+];
+
+const D=[
+  {id:1,nm:"Mega We Care Vitamin C 1000mg",nmTH:"เมก้า วิตามินซี 1000 มก. 30 เม็ด",cat:"vitamin",ev:"Mega Health Fair",pid:1,sid:1,brand:"Mega We Care",img:"https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=300&fit=crop",op:590,sp:390,stk:12,desc:"วิตามินซีสูง 1000mg ทานง่าย ไม่ระคายเคืองกระเพาะ"},
+  {id:2,nm:"Mega We Care Fish Oil 1000mg",nmTH:"เมก้า น้ำมันปลา 1000 มก. 100 แคปซูล",cat:"vitamin",ev:"Mega Health Fair",pid:1,sid:2,brand:"Mega We Care",img:"https://images.unsplash.com/photo-1550572017-edd951aa8f72?w=400&h=300&fit=crop",op:790,sp:550,stk:8,desc:"น้ำมันปลาบริสุทธิ์ ช่วยบำรุงหัวใจ หลอดเลือด สมอง"},
+  {id:3,nm:"Mega We Care Glucosamine",nmTH:"เมก้า กลูโคซามีน 400 เม็ด",cat:"vitamin",ev:"Mega Senior Care",pid:1,sid:9,brand:"Mega We Care",img:"https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=300&fit=crop",op:1290,sp:890,stk:5,desc:"กลูโคซามีนบำรุงข้อเข่า สำหรับผู้สูงอายุ"},
+  {id:4,nm:"Her Hyness Collagen Tripeptide",nmTH:"เฮอร์ไฮเนส คอลลาเจน ไตรเปปไทด์ 10 ซอง",cat:"supplement",ev:"Her Hyness Beauty Event",pid:2,sid:3,brand:"Her Hyness",img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=300&fit=crop",op:890,sp:620,stk:10,desc:"คอลลาเจนเปปไทด์ ดูดซึมง่าย ผิวเด้ง อิ่มน้ำ"},
+  {id:5,nm:"Her Hyness Vitamin C Serum",nmTH:"เฮอร์ไฮเนส วิตามินซี เซรั่ม 30ml",cat:"skincare",ev:"Her Hyness Launch",pid:2,sid:4,brand:"Her Hyness",img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=300&fit=crop",op:690,sp:480,stk:7,desc:"เซรั่มวิตามินซีเข้มข้น ลดเลือนจุดด่างดำ"},
+  {id:6,nm:"Smooth-E Cream 100g",nmTH:"สมูท-อี ครีม 100 กรัม",cat:"skincare",ev:"Smooth-E Acne Event",pid:3,sid:5,brand:"Smooth-E",img:"https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop",op:390,sp:270,stk:15,desc:"ครีมบำรุงผิวสูตรอ่อนโยน ปราศจากน้ำหอม"},
+  {id:7,nm:"Smooth-E White Babyface Cream",nmTH:"สมูท-อี ไวท์ เบบี้เฟซ ครีม 50g",cat:"skincare",ev:"Smooth-E Brightening",pid:3,sid:6,brand:"Smooth-E",img:"https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=400&h=300&fit=crop",op:350,sp:245,stk:10,desc:"ครีมหน้าขาวใส ลดฝ้า กระ จุดด่างดำ"},
+  {id:8,nm:"Smooth-E Sunscreen SPF50+",nmTH:"สมูท-อี  sunscreen SPF50+ 40ml",cat:"skincare",ev:"Smooth-E UV Protection",pid:3,sid:5,brand:"Smooth-E",img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop",op:320,sp:220,stk:9,desc:"กันแดด SPF50+ PA++++ สูตรไม่อุดตัน"},
+  {id:9,nm:"L'Oreal Paris Revitalift Serum",nmTH:"ลอริเอะ รีไวทัลิฟท์ เซรั่ม 30ml",cat:"skincare",ev:"L'Oreal Beauty Festival",pid:4,sid:7,brand:"L'Oreal Paris",img:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=300&fit=crop",op:890,sp:599,stk:6,desc:"เซรั่ม Anti-Aging ลดริ้วรอย เร่งผิวเด้ง"},
+  {id:10,nm:"L'Oreal Paris Hyaluron Serum",nmTH:"ลอริเอะ ไฮยาลูรอน เซรั่ม 30ml",cat:"skincare",ev:"L'Oreal Hydration Week",pid:4,sid:8,brand:"L'Oreal Paris",img:"https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=400&h=300&fit=crop",op:790,sp:529,stk:8,desc:"ไฮยาลูรอนเข้มข้น ผิวชุ่มชื้น 48 ชม."},
+  {id:11,nm:"Garnier Bright Complete Serum",nmTH:"การ์นิเย่ ไบรท์ คอมพลีท เซรั่ม 30ml",cat:"skincare",ev:"Garnier Glow Event",pid:5,sid:3,brand:"Garnier",img:"https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=300&fit=crop",op:399,sp:269,stk:14,desc:"เซรั่มวิตามินซี ผิวกระจ่างใสใน 3 วัน"},
+  {id:12,nm:"Garnier Micellar Water 400ml",nmTH:"การ์นิเย่ ไมเซลล่าร์ วอเตอร์ 400ml",cat:"skincare",ev:"Garnier Cleansing Day",pid:5,sid:6,brand:"Garnier",img:"https://images.unsplash.com/photo-1570194065650-d99fb4ee8e3e?w=400&h=300&fit=crop",op:279,sp:189,stk:11,desc:"น้ำยาเช็ดหน้า สูตรอ่อนโยน ไม่ต้องล้างออก"},
+  {id:13,nm:"CeraVe Hydrating Cleanser 236ml",nmTH:"เซราวี ไฮเดรติ่ง คลีนเซอร์ 236ml",cat:"skincare",ev:"CeraVe Derm Day",pid:6,sid:4,brand:"CeraVe",img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop",op:590,sp:410,stk:7,desc:"เจลล้างหน้าสำหรับผิวแห้ง-ผิวธรรมดา"},
+  {id:14,nm:"CeraVe Moisturizing Cream 340g",nmTH:"เซราวี มอยส์เจอไรซิ่ง ครีม 340g",cat:"skincare",ev:"CeraVe Deep Moisture",pid:6,sid:8,brand:"CeraVe",img:"https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=300&fit=crop",op:690,sp:480,stk:5,desc:"ครีมบำรุงผิวเข้มข้น Ceramide 3 ชนิด"},
+  {id:15,nm:"Vaseline Healthy Bright Serum SPF30",nmTH:"วาสลีน เซรั่ม SPF30 180ml",cat:"bodycare",ev:"Vaseline Glow Fest",pid:7,sid:7,brand:"Vaseline",img:"https://images.unsplash.com/photo-1570194065650-d99fb4ee8e3e?w=400&h=300&fit=crop",op:249,sp:169,stk:20,desc:"โลชั่นผิวขาว กันแดด SPF30 บำรุงผิว全身"},
+  {id:16,nm:"Vaseline Lip Therapy Original",nmTH:"วาสลีน ลิป เทอราพี ออริจินัล 7g",cat:"bodycare",ev:"Vaseline Lip Care",pid:7,sid:10,brand:"Vaseline",img:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=300&fit=crop",op:139,sp:99,stk:25,desc:"บาล์มทาปาก อ่อนโยน ไม่เหนียวเหนอะ"},
+  {id:17,nm:"Pantene Smooth & Silky 450ml",nmTH:"แพนทีน สมูท แอนด์ ซิลกี้ 450ml",cat:"haircare",ev:"Pantene Hair Fair",pid:8,sid:9,brand:"Pantene",img:"https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?w=400&h=300&fit=crop",op:229,sp:159,stk:18,desc:"แชมพูผมเรียบลื่น มีวิตามินเข้มข้น"},
+  {id:18,nm:"Pantene 3 Minute Miracle 200ml",nmTH:"แพนทีน 3 นาที มิราเคิล 200ml",cat:"haircare",ev:"Pantene Repair Week",pid:8,sid:6,brand:"Pantene",img:"https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&h=300&fit=crop",op:299,sp:199,stk:12,desc:"ทรีตเมนต์ผมเสีย แตกปลาย เห็นผลใน 3 นาที"},
+  {id:19,nm:"Colgate MaxFresh 180g",nmTH:"คอลเกต แม็กซ์เฟรช 180g",cat:"oral",ev:"Colgate Fresh Deal",pid:null,sid:2,brand:"Colgate",img:"https://images.unsplash.com/photo-1559181567-c3190ca9959b?w=400&h=300&fit=crop",op:149,sp:99,stk:30,desc:"ยาสีฟันเม็ดบีดส์ ลมหายใจสดชื่นนาน 12 ชม."},
+  {id:20,nm:"Johnson's Baby Bath 500ml",nmTH:"จอห์นสันส์ เบบี้บาธ 500ml",cat:"bodycare",ev:"Johnson Baby Fair",pid:null,sid:1,brand:"Johnson's",img:"https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=300&fit=crop",op:229,sp:159,stk:16,desc:"สบู่เหลวอาบน้ำทารก สูตรอ่อนโยน pH ที่ผิว"},
+];
+
+let cart=[],curPres=null,curBrand="all";
+
+function renderPres(){
+  document.getElementById("presList").innerHTML=P.map(p=>{
+    const c=D.filter(x=>x.pid===p.id).length;
+    return `<div class="pres-card ${curPres===p.id?'on':''}" onclick="filterPres(${p.id})">
+      <img src="${p.img}" alt="${p.name}">
+      <h4>${p.name}</h4>
+      <div class="brand">${p.brand}</div>
+      <div class="cnt">${c} สินค้า | ${p.ig}</div>
+    </div>`;
+  }).join("");
+}
+
+function renderBrands(){
+  const brands=[...new Set(D.map(x=>x.brand))].sort();
+  document.getElementById("brandPills").innerHTML=
+    `<button class="pill ${curBrand==='all'?'on':''}" onclick="setBrand('all')">ทุกแบรนด์</button>`+
+    brands.map(b=>`<button class="pill ${curBrand===b?'on':''}" onclick="setBrand('${b}')">${b}</button>`).join("")+
+    `<select class="sort-sel" id="sortSel" onchange="filterProducts()"><option value="default">เรียงลำดับ</option><option value="low">ราคาถูกสุด</option><option value="high">ราคาแพงสุด</option><option value="disc">ส่วนลดมากสุด</option></select>`;
+}
+
+function renderGrid(list){
+  const g=document.getElementById("grid");
+  document.getElementById("resCnt").textContent=`${list.length} รายการ`;
+  if(!list.length){g.innerHTML=`<div class="no-res"><h3>ไม่พบสินค้า</h3><p>ลองค้นหาด้วยคำอื่น</p></div>`;return}
+  g.innerHTML=list.map((d,i)=>{
+    const disc=Math.round((1-d.sp/d.op)*100);
+    const pres=d.pid?P.find(x=>x.id===d.pid):null;
+    const sel=S.find(x=>x.id===d.sid);
+    const saved=d.op-d.sp;
+    const lo=d.stk<=3;
+    const prog=Math.floor(Math.random()*40+50);
+    return `<div class="card" style="animation-delay:${i*0.03}s">
+      <div class="card-img">
+        <img src="${d.img}" alt="${d.nm}" loading="lazy">
+        <div class="bdg bdg-stk"><div class="stk-dot ${lo?'lo':'ok'}"></div><span class="stk-txt">${lo?'เหลือ '+d.stk+' ชิ้น!':d.stk+' ชิ้น พร้อมส่ง'}</span></div>
+        <span class="bdg bdg-dsc">-${disc}%</span>
+        ${pres?`<div class="bdg bdg-pres"><img src="${pres.img}" alt="${pres.name}"><div><div class="pn">${pres.name}</div><div class="pr">${pres.brand} ${pres.role}</div></div></div>`:''}
+      </div>
+      <div class="card-body">
+        <div class="card-brand">${d.brand}</div>
+        <div class="card-name">${d.nm}</div>
+        <div class="card-ev">${d.ev}</div>
+        <div class="price-blk">
+          <div class="pr-row"><span class="pr-lbl">ราคาเต็ม</span><span class="pr-ofc">฿${d.op.toLocaleString()}</span></div>
+          <div class="pr-row"><span class="pr-lbl">ราคาขาย</span><span class="pr-sale">฿${d.sp.toLocaleString()}</span></div>
+          <span class="pr-save">ประหยัด ฿${saved.toLocaleString()} (-${disc}%)</span>
+        </div>
+        <div class="sell-row">
+          <div class="sell-av">${sel?sel.ini:'??'}</div>
+          <div><div class="sell-nm">${sel?sel.nm:'Unknown'} ${sel&&sel.v?'&#10003;':''}</div><div class="sell-v">${sel&&sel.v?'Verified Seller':'ผู้ขาย'}</div></div>
+        </div>
+        <div class="prog-wrap">
+          <div class="prog-lbl">ยอดสะสมผู้ขายปัจจุบัน</div>
+          <div class="prog-track"><div class="prog-fill" style="width:${prog}%"></div></div>
+          <div class="prog-amt">฿${(prog*100).toLocaleString()} / ฿10,000</div>
+        </div>
+        <button class="add-btn" onclick="addToCart(${d.id})" ${d.stk<=0?'disabled':''}>${d.stk<=0?'สินค้าหมด':'เพิ่มลงตะกร้า'}</button>
+      </div>
+    </div>`;
+  }).join("");
+}
+
+function filterProducts(){
+  const q=(document.getElementById("searchInput").value||"").toLowerCase();
+  const sort=document.getElementById("sortSel")?document.getElementById("sortSel").value:"default";
+  let list=[...D];
+  if(curPres)list=list.filter(x=>x.pid===curPres);
+  if(curBrand!=="all")list=list.filter(x=>x.brand===curBrand);
+  if(q)list=list.filter(d=>{
+    const pr=d.pid?P.find(x=>x.id===d.pid):null;
+    const se=S.find(x=>x.id===d.sid);
+    return [d.nm,d.nmTH,d.brand,d.cat,d.ev,d.desc,pr?pr.name:'',pr?pr.brand:'',se?se.nm:''].join(" ").toLowerCase().includes(q);
+  });
+  if(sort==="low")list.sort((a,b)=>a.sp-b.sp);
+  else if(sort==="high")list.sort((a,b)=>b.sp-a.sp);
+  else if(sort==="disc")list.sort((a,b)=>(a.sp/a.op)-(b.sp/b.op));
+  renderGrid(list);
+}
+
+function setBrand(b){curBrand=b;curPres=null;renderPres();renderBrands();filterProducts()}
+function filterPres(id){curPres=curPres===id?null:id;curBrand="all";renderPres();renderBrands();filterProducts()}
+function resetView(){curPres=null;curBrand="all";document.getElementById("searchInput").value="";renderPres();renderBrands();filterProducts()}
+
+function addToCart(id){const d=D.find(x=>x.id===id);if(!d||d.stk<=0)return;const ex=cart.find(c=>c.id===id);if(ex){if(ex.qty<d.stk)ex.qty++}else cart.push({id,qty:1});updBadge()}
+function rmCart(id){cart=cart.filter(c=>c.id!==id);updBadge();renderCart()}
+function chgQty(id,delta){const it=cart.find(c=>c.id===id);const p=D.find(x=>x.id===id);if(!it)return;it.qty=Math.max(1,Math.min(p.stk,it.qty+delta));renderCart();updBadge()}
+function updBadge(){document.getElementById("cartCount").textContent=cart.reduce((s,c)=>s+c.qty,0)}
+function openCart(){document.getElementById("cartOv").classList.add("show");renderCart()}
+function closeCart(){document.getElementById("cartOv").classList.remove("show")}
+
+function renderCart(){
+  const b=document.getElementById("cartBody"),sm=document.getElementById("cartSum");
+  if(!cart.length){b.innerHTML=`<div class="empty-c"><div class="ic">&#128722;</div><p>ตะกร้าว่างเปล่า</p></div>`;sm.style.display="none";return}
+  let tot=0;
+  b.innerHTML=cart.map(c=>{
+    const d=D.find(x=>x.id===c.id);const sub=d.sp*c.qty;tot+=sub;
+    return `<div class="ci"><img class="ci-img" src="${d.img}" alt="${d.nm}"><div class="ci-info"><div class="ci-nm">${d.nmTH||d.nm}</div><div class="ci-sell">ผู้ขาย: ${S.find(x=>x.id===d.sid)?.nm||'?'} | เหลือ ${d.stk} ชิ้น</div><div class="ci-pr">฿${sub.toLocaleString()}</div><div class="ci-qty"><button class="qbtn" onclick="chgQty(${d.id},-1)">-</button><span>${c.qty}</span><button class="qbtn" onclick="chgQty(${d.id},1)">+</button></div><button class="ci-rm" onclick="rmCart(${d.id})">ลบออก</button></div></div>`;
+  }).join("");
+  document.getElementById("cartTotal").textContent=`฿${tot.toLocaleString()}`;sm.style.display="block";
+}
+
+function openPay(){closeCart();const tot=cart.reduce((s,c)=>{const d=D.find(x=>x.id===c.id);return s+d.sp*c.qty},0);const ref=`SPM${Date.now().toString().slice(-8)}`;document.getElementById("payOv").classList.add("show");document.getElementById("payContent").innerHTML=`<div class="qr-sec"><h3>สแกน QR Code ชำระเงิน</h3><p>PromptPay ได้ทุกธนาคาร</p><div class="qr-box"><div class="qr-g">${qrP()}</div></div><div class="qr-amt">฿${tot.toLocaleString()}</div><div class="qr-ref">Ref: ${ref}</div><div class="qr-ph">PromptPay: 081-234-5678<br>ชื่อบัญชี: SpenderMarket Co., Ltd.</div><button class="cfm-btn" onclick="cfmPay()">ยืนยันการชำระเงิน</button></div>`}
+function qrP(){const p=[[1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],[1,0,0,0,0,0,1,0,0,1,0,1,0,0,1,0,0,0,0,0,1],[1,0,1,1,1,0,1,0,1,1,0,0,1,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,0,1,1,0,1,0,1,0,1,1,1,0,1],[1,0,1,1,1,0,1,0,1,0,1,1,0,0,1,0,1,1,1,0,1],[1,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,0,0,0,1],[1,1,1,1,1,1,1,0,1,0,1,0,1,0,1,1,1,1,1,1,1],[0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0],[1,0,1,1,0,1,1,1,0,0,1,0,1,1,0,1,0,1,1,0,1],[0,1,0,1,1,0,0,1,1,0,1,1,0,0,1,0,1,0,0,1,0],[1,1,0,0,1,1,1,0,1,1,0,0,1,1,0,1,1,0,1,0,1],[0,0,1,1,0,0,0,1,0,0,1,1,0,1,1,0,0,1,1,1,0],[1,0,1,0,1,1,1,0,1,1,0,1,1,0,1,0,1,0,1,0,1],[0,0,0,0,0,0,0,0,1,0,1,0,0,1,0,0,1,0,0,1,0],[1,1,1,1,1,1,1,0,0,1,0,1,1,0,1,0,1,1,0,1,1],[1,0,0,0,0,0,1,0,1,1,0,0,0,1,0,1,0,0,1,0,0],[1,0,1,1,1,0,1,0,0,0,1,1,1,0,1,1,0,1,0,1,1],[1,0,1,1,1,0,1,0,1,1,0,1,0,1,0,0,1,1,0,0,1],[1,0,1,1,1,0,1,0,1,0,1,0,1,0,1,1,0,0,1,1,0],[1,0,0,0,0,0,1,0,0,1,1,1,0,1,0,0,1,0,1,0,1],[1,1,1,1,1,1,1,0,1,0,0,0,1,0,1,1,0,1,0,1,1]];let h="";for(let r=0;r<21;r++)for(let c=0;c<21;c++)h+=`<div class="${p[r][c]?'qc':'qw'}"></div>`;return h}
+function cfmPay(){document.getElementById("payContent").innerHTML=`<div class="ok-msg"><div class="ck">&#10003;</div><h3>ชำระเงินสำเร็จ!</h3><p>สินค้าจะถูกจัดส่งภายใน 1-3 วันทำการ</p><p style="font-size:0.68rem;margin-bottom:14px">หมายเลข: #${Date.now().toString().slice(-8)}</p><button class="cfm-btn" onclick="doneOrd()">ปิด</button></div>`}
+function doneOrd(){cart=[];updBadge();closePay()}
+function closePay(){document.getElementById("payOv").classList.remove("show")}
+document.querySelectorAll(".ov").forEach(m=>{m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show")})});
+
+renderPres();renderBrands();filterProducts();
+</script>
+</body>
+</html>
