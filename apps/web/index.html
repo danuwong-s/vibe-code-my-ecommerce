@@ -3,29 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Secret of Us | ใจซ่อนรัก - Thai GL Series</title>
+    <title>LingOrm | Thai GL Series Collection</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap');
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --primary-pink: #E91E63;
+            --pink: #E91E63;
             --soft-pink: #F8BBD0;
             --deep-pink: #C2185B;
             --cream: #FFF8F0;
             --gold: #FFD700;
-            --soft-gold: #FFF3CD;
             --text-dark: #2D2D2D;
             --text-light: #666;
             --white: #FFFFFF;
             --shadow: 0 10px 40px rgba(0,0,0,0.1);
-            --gradient-pink: linear-gradient(135deg, #E91E63 0%, #F06292 100%);
-            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+            --gradient: linear-gradient(135deg, #E91E63 0%, #F06292 100%);
             --gradient-romantic: linear-gradient(135deg, #FF6B9D 0%, #C44B8B 50%, #8B4572 100%);
         }
         
@@ -34,15 +28,13 @@
             background: var(--cream);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(10px);
             padding: 1rem 5%;
             display: flex;
@@ -56,7 +48,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--gradient-pink);
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -65,9 +57,8 @@
         .logo-thai {
             font-family: 'Sarabun', sans-serif;
             font-size: 0.9rem;
-            color: var(--primary-pink);
+            color: var(--pink);
             display: block;
-            margin-top: -5px;
         }
         
         .nav-links {
@@ -81,132 +72,74 @@
             color: var(--text-dark);
             font-weight: 500;
             transition: color 0.3s;
-            position: relative;
         }
         
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-pink);
-            transition: width 0.3s;
-        }
+        .nav-links a:hover { color: var(--pink); }
         
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-pink);
-        }
-        
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #FFF0F5 0%, #FFF8F0 50%, #F0FFF0 100%);
-            position: relative;
             padding: 6rem 5% 4rem;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(233, 30, 99, 0.1) 0%, transparent 70%);
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-            animation: float 10s ease-in-out infinite reverse;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(5deg); }
-        }
-        
-        .hero-content {
             text-align: center;
-            z-index: 1;
-            max-width: 1000px;
         }
         
-        .thai-title {
-            font-family: 'Sarabun', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 500;
-            color: var(--primary-pink);
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
+        .hero-content { max-width: 1000px; z-index: 1; }
         
-        .english-title {
+        .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
             font-weight: 700;
-            margin-bottom: 1rem;
             background: var(--gradient-romantic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            margin-bottom: 0.5rem;
         }
         
-        .subtitle {
-            font-size: 1.4rem;
+        .hero-thai {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 2rem;
+            color: var(--pink);
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
             color: var(--text-light);
             margin-bottom: 2rem;
-            font-weight: 300;
         }
         
-        .hero-description {
-            font-size: 1.15rem;
+        .hero-desc {
+            font-size: 1.1rem;
             color: var(--text-dark);
             max-width: 800px;
             margin: 0 auto 2.5rem;
             line-height: 1.8;
         }
         
-        .cta-button {
+        .cta-btn {
             display: inline-block;
             padding: 1rem 3rem;
-            background: var(--gradient-pink);
+            background: var(--gradient);
             color: var(--white);
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 10px 30px rgba(233,30,99,0.3);
         }
         
-        .cta-button:hover {
+        .cta-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+            box-shadow: 0 15px 40px rgba(233,30,99,0.4);
         }
         
-        /* Lead Artists Section */
-        .lead-artists {
-            padding: 6rem 5%;
-            background: var(--white);
-        }
-        
+        /* Section Title */
         .section-title {
             text-align: center;
             margin-bottom: 4rem;
@@ -216,26 +149,31 @@
             font-family: 'Playfair Display', serif;
             font-size: 3rem;
             margin-bottom: 0.5rem;
-            color: var(--text-dark);
         }
         
-        .section-title .thai-subtitle {
+        .section-title .thai {
             font-family: 'Sarabun', sans-serif;
             font-size: 1.5rem;
-            color: var(--primary-pink);
+            color: var(--pink);
         }
         
-        .artists-showcase {
+        /* Artists */
+        .artists {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+        
+        .artists-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 3rem;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .artist-card {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             background: linear-gradient(180deg, #FFF0F5 0%, #FFFFFF 100%);
             border-radius: 25px;
             box-shadow: var(--shadow);
@@ -245,19 +183,17 @@
         
         .artist-card:hover {
             transform: translateY(-10px);
-            border-color: var(--primary-pink);
-            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.2);
+            border-color: var(--pink);
         }
         
         .artist-photo {
-            width: 220px;
-            height: 220px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin: 0 auto 1.5rem;
             overflow: hidden;
-            border: 5px solid var(--primary-pink);
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
-            position: relative;
+            border: 5px solid var(--pink);
+            box-shadow: 0 10px 30px rgba(233,30,99,0.3);
         }
         
         .artist-photo img {
@@ -268,50 +204,31 @@
         
         .artist-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 0.3rem;
-            color: var(--text-dark);
         }
         
-        .artist-thai-name {
+        .artist-thai {
             font-family: 'Sarabun', sans-serif;
-            font-size: 1.3rem;
-            color: var(--primary-pink);
+            font-size: 1.2rem;
+            color: var(--pink);
             margin-bottom: 0.5rem;
         }
         
-        .artist-full-name {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .artist-role {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: var(--gradient-pink);
-            border-radius: 25px;
-            font-size: 0.9rem;
-            color: var(--white);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .artist-bio {
+        .artist-full {
             font-size: 0.95rem;
             color: var(--text-light);
-            line-height: 1.7;
-            text-align: left;
+            margin-bottom: 1rem;
         }
         
         .artist-socials {
             display: flex;
             justify-content: center;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
         
-        .social-icon {
+        .social-btn {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -324,161 +241,196 @@
             transition: all 0.3s;
         }
         
-        .social-icon:hover {
-            background: var(--primary-pink);
+        .social-btn:hover {
+            background: var(--pink);
             color: var(--white);
             transform: translateY(-3px);
         }
         
-        /* Synopsis Section */
-        .synopsis {
+        /* Series */
+        .series {
             padding: 6rem 5%;
             background: linear-gradient(180deg, var(--cream) 0%, #FFF0F5 100%);
         }
         
-        .synopsis-content {
-            max-width: 1000px;
-            margin: 0 auto;
+        .series-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .synopsis-text h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-        
-        .synopsis-text p {
-            color: var(--text-light);
-            line-height: 1.9;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-        
-        .synopsis-image {
-            height: 450px;
-            background: var(--gradient-romantic);
+        .series-card {
+            background: var(--white);
             border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
+            border: 2px solid transparent;
+        }
+        
+        .series-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--pink);
+            box-shadow: 0 20px 60px rgba(233,30,99,0.2);
+        }
+        
+        .series-poster {
+            height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 7rem;
-            box-shadow: var(--shadow);
+            font-size: 5rem;
             position: relative;
             overflow: hidden;
         }
         
-        .synopsis-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        .series-card:nth-child(1) .series-poster {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
         }
         
-        /* Episodes Section */
-        .episodes {
+        .series-card:nth-child(2) .series-poster {
+            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
+        }
+        
+        .series-card:nth-child(3) .series-poster {
+            background: linear-gradient(135deg, #DDA0DD 0%, #BA55D3 100%);
+        }
+        
+        .series-year {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--pink);
+        }
+        
+        .series-info {
+            padding: 2rem;
+        }
+        
+        .series-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .series-thai {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 1.3rem;
+            color: var(--pink);
+            margin-bottom: 1rem;
+        }
+        
+        .series-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .meta-tag {
+            padding: 4px 10px;
+            background: var(--soft-pink);
+            border-radius: 15px;
+            font-size: 0.75rem;
+            color: var(--deep-pink);
+            font-weight: 500;
+        }
+        
+        .series-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .series-cast {
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .series-cast strong { color: var(--pink); }
+        
+        /* Platforms */
+        .platforms {
             padding: 6rem 5%;
             background: var(--white);
         }
         
-        .episodes-grid {
+        .platform-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
-        .episode-card {
+        .platform-card {
             background: var(--cream);
+            padding: 2rem;
             border-radius: 20px;
-            overflow: hidden;
+            text-align: center;
             transition: all 0.3s;
             border: 2px solid transparent;
         }
         
-        .episode-card:hover {
-            border-color: var(--primary-pink);
-            transform: scale(1.02);
+        .platform-card:hover {
+            border-color: var(--pink);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(233,30,99,0.15);
         }
         
-        .episode-header {
-            background: var(--gradient-romantic);
-            padding: 1.5rem;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .platform-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
         
-        .episode-number {
-            width: 55px;
-            height: 55px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-        
-        .episode-title {
+        .platform-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-        }
-        
-        .episode-body {
-            padding: 1.5rem;
-        }
-        
-        .episode-date {
-            font-size: 0.9rem;
-            color: var(--primary-pink);
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
         
-        .episode-desc {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        .episode-status {
-            display: inline-block;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
+        .platform-region {
             font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 1rem;
+            color: var(--pink);
+            margin-bottom: 0.5rem;
         }
         
-        .status-released {
-            background: #E8F5E9;
-            color: #2E7D32;
+        .platform-series {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
         }
         
-        .status-upcoming {
-            background: #FFF3E0;
-            color: #E65100;
-        }
-        
-        .status-soon {
-            background: #E3F2FD;
-            color: #1565C0;
-        }
-        
-        /* Themes Section */
-        .themes {
+        /* Watch Guide */
+        .watch-guide {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, #FFF0F5 0%, #F0FFF0 100%);
+            background: var(--gradient-romantic);
+            color: var(--white);
+            text-align: center;
         }
         
-        .themes-grid {
+        .watch-guide h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .watch-guide p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .guide-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
@@ -486,213 +438,32 @@
             margin: 0 auto;
         }
         
-        .theme-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 25px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-        }
-        
-        .theme-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .theme-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .theme-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-        
-        .theme-desc {
-            font-size: 1rem;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        /* Cast Section */
-        .cast {
-            padding: 6rem 5%;
-            background: var(--white);
-        }
-        
-        .cast-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .cast-card {
-            background: var(--cream);
+        .guide-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
             padding: 2rem;
             border-radius: 20px;
-            text-align: center;
-            border: 3px solid transparent;
-            transition: all 0.3s;
+            text-align: left;
         }
         
-        .cast-card:hover {
-            border-color: var(--primary-pink);
-            box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
-        }
-        
-        .cast-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: var(--gradient-pink);
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            border: 4px solid var(--white);
-            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.2);
-        }
-        
-        .cast-name {
+        .guide-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-        }
-        
-        .cast-thai {
-            font-family: 'Sarabun', sans-serif;
-            color: var(--primary-pink);
-            margin-bottom: 0.5rem;
-        }
-        
-        .cast-role {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-        
-        /* Gallery Section */
-        .gallery {
-            padding: 6rem 5%;
-            background: linear-gradient(180deg, var(--cream) 0%, #FFF0F5 100%);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, 220px);
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .gallery-item {
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, rgba(233, 30, 99, 0.8), rgba(199, 21, 133, 0.8));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-        
-        .gallery-item:nth-child(1) {
-            grid-column: span 2;
-            background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
-        }
-        
-        .gallery-item:nth-child(2) {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-        }
-        
-        .gallery-item:nth-child(3) {
-            background: linear-gradient(135deg, #98FB98 0%, #00FA9A 100%);
-        }
-        
-        .gallery-item:nth-child(4) {
-            background: linear-gradient(135deg, #DDA0DD 0%, #BA55D3 100%);
-        }
-        
-        .gallery-item:nth-child(5) {
-            grid-column: span 2;
-            background: linear-gradient(135deg, #87CEEB 0%, #4682B4 100%);
-        }
-        
-        .gallery-item:nth-child(6) {
-            background: linear-gradient(135deg, #F0E68C 0%, #DAA520 100%);
-        }
-        
-        .gallery-item-content {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-        }
-        
-        /* Community Section */
-        .community {
-            padding: 6rem 5%;
-            background: var(--gradient-romantic);
-            color: var(--white);
-            text-align: center;
-        }
-        
-        .community h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
         
-        .community p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .guide-card ul {
+            list-style: none;
+            padding: 0;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+        .guide-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
         }
         
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50px;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-        
-        .social-link:hover {
-            background: var(--white);
-            color: var(--primary-pink);
-            transform: translateY(-3px);
-        }
+        .guide-card li:last-child { border-bottom: none; }
         
         /* Footer */
         footer {
@@ -711,7 +482,7 @@
         
         .footer-section h4 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
             color: var(--soft-pink);
         }
@@ -722,517 +493,328 @@
             text-decoration: none;
             line-height: 2;
             display: block;
-            transition: color 0.3s;
         }
         
-        .footer-section a:hover {
-            color: var(--primary-pink);
-        }
+        .footer-section a:hover { color: var(--pink); }
         
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.5);
         }
         
         .footer-thai {
             font-family: 'Sarabun', sans-serif;
-            font-size: 1.2rem;
             color: var(--soft-pink);
             margin-top: 0.5rem;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .thai-title {
-                font-size: 2.5rem;
-            }
-            
-            .english-title {
-                font-size: 2rem;
-            }
-            
-            .artists-showcase {
-                grid-template-columns: 1fr;
-            }
-            
-            .synopsis-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: auto;
-            }
-            
-            .gallery-item:nth-child(1),
-            .gallery-item:nth-child(5) {
-                grid-column: span 1;
-            }
-        }
-        
-        /* Floating Decorations */
-        .floating-heart {
-            position: fixed;
-            font-size: 2rem;
-            opacity: 0.1;
-            pointer-events: none;
-            animation: floatHeart 15s ease-in-out infinite;
-        }
-        
-        .floating-heart:nth-child(1) {
-            top: 20%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-        
-        .floating-heart:nth-child(2) {
-            top: 60%;
-            right: 5%;
-            animation-delay: 5s;
-        }
-        
-        .floating-heart:nth-child(3) {
-            bottom: 20%;
-            left: 10%;
-            animation-delay: 10s;
-        }
-        
-        @keyframes floatHeart {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.5rem; }
+            .artists-grid { grid-template-columns: 1fr; }
+            .series-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Decorations -->
-    <div class="floating-heart">💕</div>
-    <div class="floating-heart">💗</div>
-    <div class="floating-heart">💖</div>
+
+<nav>
+    <div>
+        <div class="logo">LingOrm</div>
+        <span class="logo-thai">หลิง-ออม GL Collection</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#artists">Artists</a></li>
+        <li><a href="#series">Series</a></li>
+        <li><a href="#platforms">Watch</a></li>
+        <li><a href="#guide">Guide</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1 class="hero-title">LingOrm Collection</h1>
+        <p class="hero-thai">หลิงหลิง & ออม - คู่จิ้น GL ที่โด่งดังที่สุด</p>
+        <p class="hero-subtitle">Thailand's Most Beloved Girls' Love Duo</p>
+        <p class="hero-desc">
+            Discover the complete collection of Lingling Kwong and Orm Kornnaphat's GL series. 
+            From heartbreak to second chances, their on-screen chemistry has captured hearts worldwide.
+        </p>
+        <a href="#series" class="cta-btn">Explore Series ✨</a>
+    </div>
+</section>
+
+<section class="artists" id="artists">
+    <div class="section-title">
+        <h2>Lead Artists</h2>
+        <p class="thai">นักแสดงนำ</p>
+    </div>
     
-    <!-- Navigation -->
-    <nav>
-        <div>
-            <div class="logo">The Secret of Us</div>
-            <span class="logo-thai">ใจซ่อนรัก</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#artists">Artists</a></li>
-            <li><a href="#synopsis">Story</a></li>
-            <li><a href="#episodes">Episodes</a></li>
-            <li><a href="#cast">Cast</a></li>
-            <li><a href="#community">Community</a></li>
-        </ul>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1 class="thai-title">ใจซ่อนรัก</h1>
-            <h2 class="english-title">The Secret of Us</h2>
-            <p class="subtitle">Thai Girls' Love Drama Series | Channel 3 Thailand</p>
-            <p class="hero-description">
-                A heartwarming Thai GL series about Dr. Fahlada, who reunites with her ex-girlfriend Earn years after their painful breakup. 
-                Will they find the courage to love again, or will old wounds keep them apart?
-            </p>
-            <a href="#episodes" class="cta-button">Watch Now ✨</a>
-        </div>
-    </section>
-    
-    <!-- Lead Artists Section -->
-    <section class="lead-artists" id="artists">
-        <div class="section-title">
-            <h2>Lead Artists</h2>
-            <p class="thai-subtitle">นักแสดงนำ</p>
+    <div class="artists-grid">
+        <div class="artist-card">
+            <div class="artist-photo">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face" alt="Lingling Kwong">
+            </div>
+            <h3 class="artist-name">Lingling Kwong</h3>
+            <p class="artist-thai">หลิงหลิง คอง</p>
+            <p class="artist-full">Sirilak Kwong | Born May 11, 1995 | Hong Kong</p>
+            <p style="font-size:0.9rem;color:#666;margin-bottom:1rem">Dior Global Ambassador | Multilingual Actress</p>
+            <div class="artist-socials">
+                <a href="https://www.instagram.com/linglingkwong/" class="social-btn">📸</a>
+                <a href="https://www.tiktok.com/@linglingkwong" class="social-btn">🎵</a>
+            </div>
         </div>
         
-        <div class="artists-showcase">
-            <div class="artist-card">
-                <div class="artist-photo">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face" alt="Lingling Kwong">
-                </div>
-                <h3 class="artist-name">Lingling Kwong</h3>
-                <p class="artist-thai-name">หลิงหลิง คอง</p>
-                <p class="artist-full-name">Sirilak Kwong</p>
-                <span class="artist-role">饰演 Fahlada</span>
-                <p class="artist-bio">
-                    Born May 11, 1995 in Hong Kong. Thai-Hong Kong actress under Channel 3. 
-                    Known for her multilingual talents (Cantonese, Mandarin, English, Thai). 
-                    Won Miss Khao Suan Kwang in 2018. Graduated from Khon Kaen University with honors.
-                </p>
-                <div class="artist-socials">
-                    <a href="https://www.instagram.com/linglingkwong/" class="social-icon">📸</a>
-                    <a href="https://www.tiktok.com/@linglingkwong" class="social-icon">🎵</a>
-                </div>
+        <div class="artist-card">
+            <div class="artist-photo">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face" alt="Orm Kornnaphat">
             </div>
-            
-            <div class="artist-card">
-                <div class="artist-photo">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face" alt="Orm Kornnaphat">
-                </div>
-                <h3 class="artist-name">Orm Kornnaphat</h3>
-                <p class="artist-thai-name">ออม ขนิษฐา</p>
-                <p class="artist-full-name">Kornnaphat Sethratanapong</p>
-                <span class="artist-role">饰演 Earn</span>
-                <p class="artist-bio">
-                    Born May 27, 2002 in Thailand. Rising star known for her free-spirited personality. 
-                    Famous for her role as Earn in The Secret of Us. 
-                    Reunited with Lingling in the 2025 series "Only You".
-                </p>
-                <div class="artist-socials">
-                    <a href="https://www.instagram.com/orm.kornnaphat/" class="social-icon">📸</a>
-                    <a href="#" class="social-icon">🎵</a>
-                </div>
+            <h3 class="artist-name">Orm Kornnaphat</h3>
+            <p class="artist-thai">ออม ขนิษฐา</p>
+            <p class="artist-full">Kornnaphat Sethratanapong | Born May 27, 2002 | Thailand</p>
+            <p style="font-size:0.9rem;color:#666;margin-bottom:1rem">Rising GL Star | Dior Global Ambassador</p>
+            <div class="artist-socials">
+                <a href="https://www.instagram.com/orm.kornnaphat/" class="social-btn">📸</a>
+                <a href="#" class="social-btn">🎵</a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="series" id="series">
+    <div class="section-title">
+        <h2>The Complete Series</h2>
+        <p class="thai">ผลงานทั้งหมดของหลิง-ออม</p>
+    </div>
     
-    <!-- Synopsis Section -->
-    <section class="synopsis" id="synopsis">
-        <div class="synopsis-content">
-            <div class="synopsis-text">
-                <h3>The Story</h3>
-                <p>
-                    <strong>Dr. Fahlada</strong> (Lingling Kwong), known as the "Angel Doctor," works at a prestigious hospital owned by her family. 
-                    Before her medical career, she studied abroad where she fell deeply in love with <strong>Earn</strong> (Orm Kornnaphat).
-                </p>
-                <p>
-                    The pair were together for three beautiful years before Earn abruptly ended the relationship without explanation, 
-                    telling Fahlada she "doesn't like women" and "only likes men." Heartbroken, Fahlada tried to move on with her life.
-                </p>
-                <p>
-                    Years later, their paths cross again when Earn becomes the brand spokesperson for Fahlada's hospital. 
-                    Earn tells Fahlada she missed her, and their reunion becomes passionate as former flames reignite.
-                </p>
-                <p>
-                    But Fahlada harbors a secret—she wants Earn to know "how it feels to be ditched." 
-                    Will their love story find a happy ending, or will past wounds destroy their second chance?
-                </p>
-            </div>
-            <div class="synopsis-image">
+    <div class="series-grid">
+        <!-- The Secret of Us -->
+        <div class="series-card">
+            <div class="series-poster">
                 💕
+                <span class="series-year">2024</span>
             </div>
-        </div>
-    </section>
-    
-    <!-- Episodes Section -->
-    <section class="episodes" id="episodes">
-        <div class="section-title">
-            <h2>Episodes</h2>
-            <p class="thai-subtitle">ตอนทั้งหมด (8 ตอน)</p>
-        </div>
-        
-        <div class="episodes-grid">
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">01</div>
-                    <h3 class="episode-title">First Heartbreak</h3>
+            <div class="series-info">
+                <h3 class="series-title">The Secret of Us</h3>
+                <p class="series-thai">ใจซ่อนรัก</p>
+                <div class="series-meta">
+                    <span class="meta-tag">8 Episodes</span>
+                    <span class="meta-tag">Drama</span>
+                    <span class="meta-tag">Romance</span>
+                    <span class="meta-tag">GL</span>
                 </div>
-                <div class="episode-body">
-                    <p class="episode-date">June 24, 2024</p>
-                    <p class="episode-desc">
-                        Flashback to Fahlada and Earn's beautiful romance abroad, 
-                        ending with Earn's shocking breakup that leaves Fahlada devastated.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">02</div>
-                    <h3 class="episode-title">Unexpected Reunion</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">July 1, 2024</p>
-                    <p class="episode-desc">
-                        Years later, Earn appears as the hospital spokesperson. 
-                        Fahlada must face the woman who broke her heart.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">03</div>
-                    <h3 class="episode-title">Secret Desires</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">July 8, 2024</p>
-                    <p class="episode-desc">
-                        Earn assumes Fahlada has forgiven her, but the doctor has her own plans. 
-                        Their chemistry becomes undeniable.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">04</div>
-                    <h3 class="episode-title">Revenge Game</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">July 15, 2024</p>
-                    <p class="episode-desc">
-                        Fahlada reveals her plan to make Earn feel the pain she endured. 
-                        But playing with fire might burn them both.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">05</div>
-                    <h3 class="episode-title">True Feelings</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">July 22, 2024</p>
-                    <p class="episode-desc">
-                        Beneath the revenge game, real feelings resurface. 
-                        Both women struggle with their complicated emotions.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">06</div>
-                    <h3 class="episode-title">Family Secrets</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">July 29, 2024</p>
-                    <p class="episode-desc">
-                        Fahlada's mother falls ill, forcing her to confront family expectations 
-                        and her relationship with Earn.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">07</div>
-                    <h3 class="episode-title">Acceptance</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">August 5, 2024</p>
-                    <p class="episode-desc">
-                        Fahlada's father encourages her to follow her heart. 
-                        Earn proves her love is real and lasting.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-            
-            <div class="episode-card">
-                <div class="episode-header">
-                    <div class="episode-number">08</div>
-                    <h3 class="episode-title">The Secret of Us</h3>
-                </div>
-                <div class="episode-body">
-                    <p class="episode-date">August 12, 2024</p>
-                    <p class="episode-desc">
-                        The emotional finale where love conquers all. 
-                        Fahlada and Earn finally find their happy ending together.
-                    </p>
-                    <span class="episode-status status-released">Released</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Themes Section -->
-    <section class="themes">
-        <div class="section-title">
-            <h2>Series Themes</h2>
-            <p class="thai-subtitle">ประเด็นหลัก</p>
-        </div>
-        
-        <div class="themes-grid">
-            <div class="theme-card">
-                <div class="theme-icon">💕</div>
-                <h3 class="theme-title">Second Chance Love</h3>
-                <p class="theme-desc">
-                    Two former lovers reunite years after a painful breakup, 
-                    discovering if love can truly heal old wounds.
+                <p class="series-desc">
+                    Dr. Fahlada, known as the "Angel Doctor," reunites with her ex-girlfriend Earn years after a painful breakup. 
+                    When Earn becomes the hospital spokesperson, old wounds reopen and forbidden feelings resurface.
                 </p>
-            </div>
-            
-            <div class="theme-card">
-                <div class="theme-icon">💔</div>
-                <h3 class="theme-title">Heartbreak & Healing</h3>
-                <p class="theme-desc">
-                    Exploring the depths of emotional pain and the journey 
-                    toward forgiveness and understanding.
+                <p class="series-cast">
+                    <strong>Lingling Kwong</strong> as Dr. Fahlada | <strong>Orm Kornnaphat</strong> as Earn
                 </p>
-            </div>
-            
-            <div class="theme-card">
-                <div class="theme-icon">🏥</div>
-                <h3 class="theme-title">Medical Drama</h3>
-                <p class="theme-desc">
-                    Set in a prestigious hospital, blending romance with 
-                    the high-stakes world of medicine.
-                </p>
-            </div>
-            
-            <div class="theme-card">
-                <div class="theme-icon">👨‍👩‍👧</div>
-                <h3 class="theme-title">Family Acceptance</h3>
-                <p class="theme-desc">
-                    Navigating family expectations and the journey 
-                    toward acceptance and understanding.
-                </p>
-            </div>
-            
-            <div class="theme-card">
-                <div class="theme-icon">🎭</div>
-                <h3 class="theme-title">Revenge & Redemption</h3>
-                <p class="theme-desc">
-                    The complex dance between seeking revenge and 
-                    finding redemption through love.
-                </p>
-            </div>
-            
-            <div class="theme-card">
-                <div class="theme-icon">✨</div>
-                <h3 class="theme-title">Self-Discovery</h3>
-                <p class="theme-desc">
-                    Both characters learn about themselves and what 
-                    they truly want from life and love.
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Cast Section -->
-    <section class="cast" id="cast">
-        <div class="section-title">
-            <h2>Supporting Cast</h2>
-            <p class="thai-subtitle">นักแสดงสมทบ</p>
-        </div>
-        
-        <div class="cast-grid">
-            <div class="cast-card">
-                <div class="cast-avatar">👩‍⚕️</div>
-                <h3 class="cast-name">Eclair Chatsak</h3>
-                <p class="cast-thai">เอสเคลอร์</p>
-                <p class="cast-role">饰演 Susi</p>
-            </div>
-            
-            <div class="cast-card">
-                <div class="cast-avatar">👨‍⚕️</div>
-                <h3 class="cast-name">Phuthares Rattanawong</h3>
-                <p class="cast-thai">พุธares</p>
-                <p class="cast-role">饰演 Fahlada's Father</p>
-            </div>
-            
-            <div class="cast-card">
-                <div class="cast-avatar">👩</div>
-                <h3 class="cast-name">Russamee Thananusak</h3>
-                <p class="cast-thai">รุ่งศรี</p>
-                <p class="cast-role">饰演 Fahlada's Mother</p>
-            </div>
-            
-            <div class="cast-card">
-                <div class="cast-avatar">👨</div>
-                <h3 class="cast-name">Supporting Cast</h3>
-                <p class="cast-thai">นักแสดงเพิ่มเติม</p>
-                <p class="cast-role">Various Roles</p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Gallery Section -->
-    <section class="gallery">
-        <div class="section-title">
-            <h2>Gallery</h2>
-            <p class="thai-subtitle">แกลเลอรี่</p>
-        </div>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="gallery-item-content">💕👩‍❤️‍👩</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">🏥</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">💔</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">✨</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">🎭💋</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">🌸</div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Community Section -->
-    <section class="community" id="community">
-        <h2>Join the LingOrm Fandom</h2>
-        <p>Connect with fans worldwide and share your love for The Secret of Us!</p>
-        
-        <div class="social-links">
-            <a href="#" class="social-link">💬 Discord</a>
-            <a href="#" class="social-link">📸 Instagram</a>
-            <a href="#" class="social-link">🐦 Twitter/X</a>
-            <a href="#" class="social-link">📺 YouTube</a>
-            <a href="#" class="social-link">📝 TikTok</a>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>About the Series</h4>
-                <p>The Secret of Us (ใจซ่อนรัก) is a 2024 Thai GL drama series produced by Channel 3 Thailand, starring Lingling Kwong and Orm Kornnaphat.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="#home">Home</a>
-                <a href="#artists">Artists</a>
-                <a href="#episodes">Episodes</a>
-                <a href="#cast">Cast</a>
-            </div>
-            <div class="footer-section">
-                <h4>Watch On</h4>
-                <a href="#">Channel 3</a>
-                <a href="#">Netflix</a>
-                <a href="#">YouTube</a>
-                <a href="#">ch3+</a>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>📧 fan@secretofus.com</p>
-                <p>🌐 www.ch3thailand.com</p>
+                <p style="font-size:0.85rem;color:#E91E63">⭐ Score: 8.1/10 on MyDramaList</p>
             </div>
         </div>
         
-        <div class="footer-bottom">
-            <p>© 2024 Channel 3 Thailand. All rights reserved.</p>
-            <p class="footer-thai">สร้างด้วยความรักจากประเทศไทย 💕</p>
-            <p class="footer-thai">#ใจซ่อนรัก #LingOrm #TheSecretOfUs</p>
+        <!-- Only You -->
+        <div class="series-card">
+            <div class="series-poster">
+                🛡️
+                <span class="series-year">2025</span>
+            </div>
+            <div class="series-info">
+                <h3 class="series-title">Only You</h3>
+                <p class="series-thai">เพียงเธอ</p>
+                <div class="series-meta">
+                    <span class="meta-tag">Action</span>
+                    <span class="meta-tag">Romance</span>
+                    <span class="meta-tag">GL</span>
+                </div>
+                <p class="series-desc">
+                    Tawan, a cool female bodyguard, is tasked with protecting Ayla, a famous idol. 
+                    The strict rule: Ayla must never be out of Tawan's sight. But guarding her heart proves impossible.
+                </p>
+                <p class="series-cast">
+                    <strong>Lingling Kwong</strong> as Tawan | <strong>Orm Kornnaphat</strong> as Ayla
+                </p>
+                <p style="font-size:0.85rem;color:#E91E63">🎧 OST: "Moonlight" & "Stand Alone"</p>
+            </div>
         </div>
-    </footer>
+        
+        <!-- In Love Forever -->
+        <div class="series-card">
+            <div class="series-poster">
+                💍
+                <span class="series-year">2026</span>
+            </div>
+            <div class="series-info">
+                <h3 class="series-title">In Love Forever</h3>
+                <p class="series-thai">วาดฝันวันวิวาห์</p>
+                <div class="series-meta">
+                    <span class="meta-tag">12 Episodes</span>
+                    <span class="meta-tag">Romance</span>
+                    <span class="meta-tag">Melodrama</span>
+                    <span class="meta-tag">GL</span>
+                </div>
+                <p class="series-desc">
+                    A glamorous lawyer and a Gen-Z heiress divorce after family pressure tears their marriage apart. 
+                    When a major business deal forces them to reunite, old feelings begin to resurface.
+                </p>
+                <p class="series-cast">
+                    <strong>Lingling Kwong</strong> as Ran | <strong>Orm Kornnaphat</strong> as Neen
+                </p>
+                <p style="font-size:0.85rem;color:#E91E63">📅 Premiere: June 19, 2026 on Channel 3</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="platforms" id="platforms">
+    <div class="section-title">
+        <h2>Where to Watch</h2>
+        <p class="thai">ช่องทางรับชม</p>
+    </div>
+    
+    <div class="platform-grid">
+        <div class="platform-card">
+            <div class="platform-icon">📺</div>
+            <h3 class="platform-name">Channel 3</h3>
+            <p class="platform-region">Thailand</p>
+            <p class="platform-series">
+                The Secret of Us ✅<br>
+                Only You ✅<br>
+                In Love Forever ✅
+            </p>
+        </div>
+        
+        <div class="platform-card">
+            <div class="platform-icon">🎬</div>
+            <h3 class="platform-name">Netflix</h3>
+            <p class="platform-region">Southeast Asia</p>
+            <p class="platform-series">
+                The Secret of Us ✅<br>
+                Only You ✅<br>
+                In Love Forever (TBA)
+            </p>
+        </div>
+        
+        <div class="platform-card">
+            <div class="platform-icon">📱</div>
+            <h3 class="platform-name">CH3 Plus</h3>
+            <p class="platform-region">Global (with Eng Sub)</p>
+            <p class="platform-series">
+                The Secret of Us ✅<br>
+                Only You ✅<br>
+                In Love Forever ✅
+            </p>
+        </div>
+        
+        <div class="platform-card">
+            <div class="platform-icon">▶️</div>
+            <h3 class="platform-name">YouTube</h3>
+            <p class="platform-region">Global (Exc. SEA)</p>
+            <p class="platform-series">
+                The Secret of Us ✅<br>
+                Only You ✅<br>
+                In Love Forever (TBA)
+            </p>
+        </div>
+        
+        <div class="platform-card">
+            <div class="platform-icon">🍎</div>
+            <h3 class="platform-name">friDay</h3>
+            <p class="platform-region">Taiwan</p>
+            <p class="platform-series">
+                Only You ✅
+            </p>
+        </div>
+        
+        <div class="platform-card">
+            <div class="platform-icon">🌐</div>
+            <h3 class="platform-name">myTV SUPER</h3>
+            <p class="platform-region">Hong Kong</p>
+            <p class="platform-series">
+                Only You ✅
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="watch-guide" id="guide">
+    <h2>Viewing Guide</h2>
+    <p>Complete guide to watching LingOrm series by region</p>
+    
+    <div class="guide-grid">
+        <div class="guide-card">
+            <h3>🇹🇭 Thailand</h3>
+            <ul>
+                <li><strong>TV:</strong> Channel 3 (Free)</li>
+                <li><strong>App:</strong> CH3 Plus (Free + Premium)</li>
+                <li><strong>Streaming:</strong> Netflix, YouTube</li>
+                <li><strong>Schedule:</strong> Fridays 8:30 PM</li>
+            </ul>
+        </div>
+        
+        <div class="guide-card">
+            <h3>🌏 Southeast Asia</h3>
+            <ul>
+                <li><strong>Netflix:</strong> All series with Eng Sub</li>
+                <li><strong>CH3 Plus:</strong> Free streaming</li>
+                <li><strong>Schedule:</strong> Fridays 10:30 PM</li>
+            </ul>
+        </div>
+        
+        <div class="guide-card">
+            <h3>🌍 Global</h3>
+            <ul>
+                <li><strong>YouTube:</strong> CH3 Plus Channel</li>
+                <li><strong>CH3 Plus:</strong> With English subtitles</li>
+                <li><strong>Netflix:</strong> Select regions</li>
+            </ul>
+        </div>
+        
+        <div class="guide-card">
+            <h3>🎬 Series Order</h3>
+            <ul>
+                <li>1. The Secret of Us (2024)</li>
+                <li>2. Only You (2025)</li>
+                <li>3. In Love Forever (2026)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>About LingOrm</h4>
+            <p>Lingling Kwong and Orm Kornnaphat are Thailand's most popular GL couple, known for their incredible on-screen chemistry in Channel 3 productions.</p>
+        </div>
+        <div class="footer-section">
+            <h4>Series</h4>
+            <a href="#">The Secret of Us (2024)</a>
+            <a href="#">Only You (2025)</a>
+            <a href="#">In Love Forever (2026)</a>
+        </div>
+        <div class="footer-section">
+            <h4>Follow LingOrm</h4>
+            <a href="#">Instagram @lingormch3</a>
+            <a href="#">Twitter @LingOrmCH3</a>
+            <a href="#">TikTok @lingorm_ch3</a>
+        </div>
+        <div class="footer-section">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>© 2026 LingOrm Fan Page. All rights reserved.</p>
+        <p class="footer-thai">#LingOrm #ใจซ่อนรัก #เพียงเธอ #วาดฝันวันวิวาห์</p>
+    </div>
+</footer>
+
 </body>
 </html>
