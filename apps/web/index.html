@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>รักแรกของหัวใจ | First Love of the Heart - Thai GL Series</title>
+    <title>The Secret of Us | ใจซ่อนรัก - Thai GL Series</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Sarabun:wght@300;400;500&display=swap');
         
@@ -26,6 +26,7 @@
             --shadow: 0 10px 40px rgba(0,0,0,0.1);
             --gradient-pink: linear-gradient(135deg, #E91E63 0%, #F06292 100%);
             --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+            --gradient-romantic: linear-gradient(135deg, #FF6B9D 0%, #C44B8B 50%, #8B4572 100%);
         }
         
         body {
@@ -59,6 +60,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+        }
+        
+        .logo-thai {
+            font-family: 'Sarabun', sans-serif;
+            font-size: 0.9rem;
+            color: var(--primary-pink);
+            display: block;
+            margin-top: -5px;
         }
         
         .nav-links {
@@ -136,12 +145,12 @@
         .hero-content {
             text-align: center;
             z-index: 1;
-            max-width: 900px;
+            max-width: 1000px;
         }
         
         .thai-title {
             font-family: 'Sarabun', sans-serif;
-            font-size: 4rem;
+            font-size: 4.5rem;
             font-weight: 500;
             color: var(--primary-pink);
             margin-bottom: 0.5rem;
@@ -150,26 +159,26 @@
         
         .english-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            background: var(--gradient-pink);
+            background: var(--gradient-romantic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-light);
             margin-bottom: 2rem;
             font-weight: 300;
         }
         
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-dark);
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto 2.5rem;
             line-height: 1.8;
         }
@@ -192,16 +201,8 @@
             box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
         }
         
-        /* Lotus Divider */
-        .lotus-divider {
-            text-align: center;
-            padding: 3rem 0;
-            font-size: 3rem;
-            opacity: 0.3;
-        }
-        
-        /* Characters Section */
-        .characters {
+        /* Lead Artists Section */
+        .lead-artists {
             padding: 6rem 5%;
             background: var(--white);
         }
@@ -224,110 +225,109 @@
             color: var(--primary-pink);
         }
         
-        .characters-grid {
+        .artists-showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            max-width: 1400px;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
             margin: 0 auto;
         }
         
-        .character-card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
+        .artist-card {
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(180deg, #FFF0F5 0%, #FFFFFF 100%);
+            border-radius: 25px;
             box-shadow: var(--shadow);
             transition: all 0.4s;
-            position: relative;
+            border: 2px solid transparent;
         }
         
-        .character-card:hover {
+        .artist-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: var(--primary-pink);
+            box-shadow: 0 20px 60px rgba(233, 30, 99, 0.2);
         }
         
-        .character-image {
-            height: 320px;
-            background: var(--gradient-pink);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .character-image::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-            animation: shimmer 3s ease-in-out infinite;
-        }
-        
-        @keyframes shimmer {
-            0%, 100% { transform: translateX(-30%) translateY(-30%); }
-            50% { transform: translateX(30%) translateY(30%); }
-        }
-        
-        .character-avatar {
-            width: 180px;
-            height: 180px;
+        .artist-photo {
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
-            background: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            z-index: 1;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 5px solid var(--primary-pink);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+            position: relative;
         }
         
-        .character-card:nth-child(2) .character-image {
-            background: var(--gradient-gold);
+        .artist-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
-        .character-card:nth-child(3) .character-image {
-            background: linear-gradient(135deg, #9C27B0 0%, #E040FB 100%);
-        }
-        
-        .character-card:nth-child(4) .character-image {
-            background: linear-gradient(135deg, #00BCD4 0%, #4DD0E1 100%);
-        }
-        
-        .character-info {
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        .character-name {
+        .artist-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             margin-bottom: 0.3rem;
             color: var(--text-dark);
         }
         
-        .character-thai-name {
+        .artist-thai-name {
             font-family: 'Sarabun', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--primary-pink);
+            margin-bottom: 0.5rem;
+        }
+        
+        .artist-full-name {
+            font-size: 1rem;
+            color: var(--text-light);
             margin-bottom: 1rem;
         }
         
-        .character-role {
+        .artist-role {
             display: inline-block;
-            padding: 0.4rem 1rem;
-            background: var(--soft-pink);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--deep-pink);
+            padding: 0.5rem 1.5rem;
+            background: var(--gradient-pink);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: var(--white);
+            font-weight: 600;
             margin-bottom: 1rem;
         }
         
-        .character-desc {
+        .artist-bio {
             font-size: 0.95rem;
             color: var(--text-light);
             line-height: 1.7;
+            text-align: left;
+        }
+        
+        .artist-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--soft-pink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+            transform: translateY(-3px);
         }
         
         /* Synopsis Section */
@@ -337,7 +337,7 @@
         }
         
         .synopsis-content {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -347,7 +347,7 @@
         
         .synopsis-text h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
             color: var(--text-dark);
         }
@@ -356,16 +356,17 @@
             color: var(--text-light);
             line-height: 1.9;
             margin-bottom: 1.5rem;
+            font-size: 1.05rem;
         }
         
         .synopsis-image {
-            height: 400px;
-            background: var(--gradient-pink);
-            border-radius: 20px;
+            height: 450px;
+            background: var(--gradient-romantic);
+            border-radius: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6rem;
+            font-size: 7rem;
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
@@ -394,7 +395,7 @@
         
         .episode-card {
             background: var(--cream);
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s;
             border: 2px solid transparent;
@@ -406,7 +407,7 @@
         }
         
         .episode-header {
-            background: var(--gradient-pink);
+            background: var(--gradient-romantic);
             padding: 1.5rem;
             color: var(--white);
             display: flex;
@@ -415,20 +416,20 @@
         }
         
         .episode-number {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             background: rgba(255,255,255,0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
         }
         
         .episode-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
         }
         
         .episode-body {
@@ -436,22 +437,22 @@
         }
         
         .episode-date {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--primary-pink);
             margin-bottom: 0.5rem;
         }
         
         .episode-desc {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-light);
             line-height: 1.7;
         }
         
         .episode-status {
             display: inline-block;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.75rem;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
             margin-top: 1rem;
         }
@@ -479,7 +480,7 @@
         
         .themes-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
@@ -488,7 +489,7 @@
         .theme-card {
             background: var(--white);
             padding: 2.5rem;
-            border-radius: 20px;
+            border-radius: 25px;
             text-align: center;
             box-shadow: var(--shadow);
             transition: all 0.3s;
@@ -499,78 +500,81 @@
         }
         
         .theme-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
         }
         
         .theme-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
         }
         
         .theme-desc {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-light);
             line-height: 1.7;
         }
         
-        /* Artists Section */
-        .artists {
+        /* Cast Section */
+        .cast {
             padding: 6rem 5%;
             background: var(--white);
         }
         
-        .artists-grid {
+        .cast-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        .artist-card {
+        .cast-card {
             background: var(--cream);
-            padding: 2.5rem;
+            padding: 2rem;
             border-radius: 20px;
             text-align: center;
             border: 3px solid transparent;
             transition: all 0.3s;
         }
         
-        .artist-card:hover {
-            border-color: var(--gold);
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+        .cast-card:hover {
+            border-color: var(--primary-pink);
+            box-shadow: 0 10px 40px rgba(233, 30, 99, 0.15);
         }
         
-        .artist-avatar {
-            width: 100px;
-            height: 100px;
+        .cast-avatar {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: var(--gradient-gold);
+            background: var(--gradient-pink);
             margin: 0 auto 1.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            border: 4px solid var(--white);
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.2);
         }
         
-        .artist-name {
+        .cast-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 0.3rem;
         }
         
-        .artist-thai {
+        .cast-thai {
             font-family: 'Sarabun', sans-serif;
             color: var(--primary-pink);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
         
-        .artist-role {
+        .cast-role {
             font-size: 0.9rem;
             color: var(--text-light);
+            font-weight: 500;
         }
         
         /* Gallery Section */
@@ -582,14 +586,14 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(2, 200px);
+            grid-template-rows: repeat(2, 220px);
             gap: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         
         .gallery-item {
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
@@ -599,14 +603,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, rgba(233, 30, 99, 0.8), rgba(255, 215, 0, 0.8));
+            background: linear-gradient(45deg, rgba(233, 30, 99, 0.8), rgba(199, 21, 133, 0.8));
             opacity: 0;
             transition: opacity 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: white;
         }
         
         .gallery-item:hover::before {
@@ -645,25 +644,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
         }
         
         /* Community Section */
         .community {
             padding: 6rem 5%;
-            background: var(--gradient-pink);
+            background: var(--gradient-romantic);
             color: var(--white);
             text-align: center;
         }
         
         .community h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
         
         .community p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
@@ -712,7 +711,7 @@
         
         .footer-section h4 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 1.5rem;
             color: var(--soft-pink);
         }
@@ -758,6 +757,10 @@
                 font-size: 2rem;
             }
             
+            .artists-showcase {
+                grid-template-columns: 1fr;
+            }
+            
             .synopsis-content {
                 grid-template-columns: 1fr;
             }
@@ -774,33 +777,33 @@
         }
         
         /* Floating Decorations */
-        .floating-flower {
+        .floating-heart {
             position: fixed;
             font-size: 2rem;
             opacity: 0.1;
             pointer-events: none;
-            animation: floatFlower 15s ease-in-out infinite;
+            animation: floatHeart 15s ease-in-out infinite;
         }
         
-        .floating-flower:nth-child(1) {
+        .floating-heart:nth-child(1) {
             top: 20%;
             left: 5%;
             animation-delay: 0s;
         }
         
-        .floating-flower:nth-child(2) {
+        .floating-heart:nth-child(2) {
             top: 60%;
             right: 5%;
             animation-delay: 5s;
         }
         
-        .floating-flower:nth-child(3) {
+        .floating-heart:nth-child(3) {
             bottom: 20%;
             left: 10%;
             animation-delay: 10s;
         }
         
-        @keyframes floatFlower {
+        @keyframes floatHeart {
             0%, 100% {
                 transform: translateY(0) rotate(0deg);
             }
@@ -812,19 +815,22 @@
 </head>
 <body>
     <!-- Floating Decorations -->
-    <div class="floating-flower">🌸</div>
-    <div class="floating-flower">🌺</div>
-    <div class="floating-flower">💮</div>
+    <div class="floating-heart">💕</div>
+    <div class="floating-heart">💗</div>
+    <div class="floating-heart">💖</div>
     
     <!-- Navigation -->
     <nav>
-        <div class="logo">🌸 Rak Raek</div>
+        <div>
+            <div class="logo">The Secret of Us</div>
+            <span class="logo-thai">ใจซ่อนรัก</span>
+        </div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#characters">Characters</a></li>
+            <li><a href="#artists">Artists</a></li>
             <li><a href="#synopsis">Story</a></li>
             <li><a href="#episodes">Episodes</a></li>
-            <li><a href="#artists">Artists</a></li>
+            <li><a href="#cast">Cast</a></li>
             <li><a href="#community">Community</a></li>
         </ul>
     </nav>
@@ -832,82 +838,60 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1 class="thai-title">รักแรกของหัวใจ</h1>
-            <h2 class="english-title">First Love of the Heart</h2>
-            <p class="subtitle">A Thai Girls' Love Web Series</p>
+            <h1 class="thai-title">ใจซ่อนรัก</h1>
+            <h2 class="english-title">The Secret of Us</h2>
+            <p class="subtitle">Thai Girls' Love Drama Series | Channel 3 Thailand</p>
             <p class="hero-description">
-                Journey to Chiang Mai where two hearts from different worlds discover the beauty of first love. 
-                Follow Nari and Kan as they navigate tradition, dreams, and the courage to love authentically.
+                A heartwarming Thai GL series about Dr. Fahlada, who reunites with her ex-girlfriend Earn years after their painful breakup. 
+                Will they find the courage to love again, or will old wounds keep them apart?
             </p>
-            <a href="#episodes" class="cta-button">Start Reading ✨</a>
+            <a href="#episodes" class="cta-button">Watch Now ✨</a>
         </div>
     </section>
     
-    <!-- Characters Section -->
-    <section class="characters" id="characters">
+    <!-- Lead Artists Section -->
+    <section class="lead-artists" id="artists">
         <div class="section-title">
-            <h2>Meet the Characters</h2>
-            <p class="thai-subtitle">ตัวละครหลัก</p>
+            <h2>Lead Artists</h2>
+            <p class="thai-subtitle">นักแสดงนำ</p>
         </div>
         
-        <div class="characters-grid">
-            <div class="character-card">
-                <div class="character-image">
-                    <div class="character-avatar">🌿</div>
+        <div class="artists-showcase">
+            <div class="artist-card">
+                <div class="artist-photo">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&crop=face" alt="Lingling Kwong">
                 </div>
-                <div class="character-info">
-                    <h3 class="character-name">Naree "Nari" Sukjai</h3>
-                    <p class="character-thai-name">นารี สุขใจ</p>
-                    <span class="character-role">The Botanical Artist</span>
-                    <p class="character-desc">
-                        A gentle soul from Chiang Mai's flower farms, Nari finds peace in painting 
-                        the region's flora. Her quiet strength hides a heart ready for adventure.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="character-card">
-                <div class="character-image">
-                    <div class="character-avatar">👗</div>
-                </div>
-                <div class="character-info">
-                    <h3 class="character-name">Kannika "Kan" Rattanapong</h3>
-                    <p class="character-thai-name">กัณฐิการ์ รัตนพงศ์</p>
-                    <span class="character-role">The Fashion Designer</span>
-                    <p class="character-desc">
-                        Bold and ambitious from Bangkok's fashion scene, Kan comes to Chiang Mai 
-                        seeking inspiration. She discovers more than just designs—she finds love.
-                    </p>
+                <h3 class="artist-name">Lingling Kwong</h3>
+                <p class="artist-thai-name">หลิงหลิง คอง</p>
+                <p class="artist-full-name">Sirilak Kwong</p>
+                <span class="artist-role">饰演 Fahlada</span>
+                <p class="artist-bio">
+                    Born May 11, 1995 in Hong Kong. Thai-Hong Kong actress under Channel 3. 
+                    Known for her multilingual talents (Cantonese, Mandarin, English, Thai). 
+                    Won Miss Khao Suan Kwang in 2018. Graduated from Khon Kaen University with honors.
+                </p>
+                <div class="artist-socials">
+                    <a href="https://www.instagram.com/linglingkwong/" class="social-icon">📸</a>
+                    <a href="https://www.tiktok.com/@linglingkwong" class="social-icon">🎵</a>
                 </div>
             </div>
             
-            <div class="character-card">
-                <div class="character-image">
-                    <div class="character-avatar">☕</div>
+            <div class="artist-card">
+                <div class="artist-photo">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face" alt="Orm Kornnaphat">
                 </div>
-                <div class="character-info">
-                    <h3 class="character-name">Patchara "Patch" Maneekan</h3>
-                    <p class="character-thai-name">พัฒน์ มานีกานต์</p>
-                    <span class="character-role">The Tech-Savvy Barista</span>
-                    <p class="character-desc">
-                        Nari's loyal best friend runs the local café where hearts connect over 
-                        coffee. Tech-savvy and warm-hearted, Patch bridges two worlds.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="character-card">
-                <div class="character-image">
-                    <div class="character-avatar">✨</div>
-                </div>
-                <div class="character-info">
-                    <h3 class="character-name">Siriporn "Siri" Thongkham</h3>
-                    <p class="character-thai-name">ศิริพร ทองคำ</p>
-                    <span class="character-role">The Enigmatic Roommate</span>
-                    <p class="character-desc">
-                        Kan's glamorous roommate carries secrets that will change everything. 
-                        Behind the designer clothes lies a story waiting to unfold.
-                    </p>
+                <h3 class="artist-name">Orm Kornnaphat</h3>
+                <p class="artist-thai-name">ออม ขนิษฐา</p>
+                <p class="artist-full-name">Kornnaphat Sethratanapong</p>
+                <span class="artist-role">饰演 Earn</span>
+                <p class="artist-bio">
+                    Born May 27, 2002 in Thailand. Rising star known for her free-spirited personality. 
+                    Famous for her role as Earn in The Secret of Us. 
+                    Reunited with Lingling in the 2025 series "Only You".
+                </p>
+                <div class="artist-socials">
+                    <a href="https://www.instagram.com/orm.kornnaphat/" class="social-icon">📸</a>
+                    <a href="#" class="social-icon">🎵</a>
                 </div>
             </div>
         </div>
@@ -919,27 +903,24 @@
             <div class="synopsis-text">
                 <h3>The Story</h3>
                 <p>
-                    In the misty mountains of Chiang Mai, where ancient temples meet blooming flower farms, 
-                    two young women are about to discover that love knows no boundaries.
+                    <strong>Dr. Fahlada</strong> (Lingling Kwong), known as the "Angel Doctor," works at a prestigious hospital owned by her family. 
+                    Before her medical career, she studied abroad where she fell deeply in love with <strong>Earn</strong> (Orm Kornnaphat).
                 </p>
                 <p>
-                    <strong>Nari</strong>, a talented botanical illustrator, has always found solace in nature's beauty. 
-                    Her world is peaceful until <strong>Kan</strong>, a fiercely ambitious fashion designer from Bangkok, 
-                    arrives seeking inspiration for her new collection.
+                    The pair were together for three beautiful years before Earn abruptly ended the relationship without explanation, 
+                    telling Fahlada she "doesn't like women" and "only likes men." Heartbroken, Fahlada tried to move on with her life.
                 </p>
                 <p>
-                    As Kan immerses herself in Chiang Mai's rich culture, she finds herself drawn not just to 
-                    the scenery, but to the quiet artist who sees the world through petals and paint. Their 
-                    connection blooms like the flowers Nari paints—beautiful, unexpected, and impossible to ignore.
+                    Years later, their paths cross again when Earn becomes the brand spokesperson for Fahlada's hospital. 
+                    Earn tells Fahlada she missed her, and their reunion becomes passionate as former flames reignite.
                 </p>
                 <p>
-                    But their journey isn't without challenges. Family expectations, societal norms, and their 
-                    own fears threaten to keep them apart. Will they find the courage to love openly, or will 
-                    their first love remain a beautiful painting—captured but never fully lived?
+                    But Fahlada harbors a secret—she wants Earn to know "how it feels to be ditched." 
+                    Will their love story find a happy ending, or will past wounds destroy their second chance?
                 </p>
             </div>
             <div class="synopsis-image">
-                🌸
+                💕
             </div>
         </div>
     </section>
@@ -948,20 +929,20 @@
     <section class="episodes" id="episodes">
         <div class="section-title">
             <h2>Episodes</h2>
-            <p class="thai-subtitle">ตอนทั้งหมด</p>
+            <p class="thai-subtitle">ตอนทั้งหมด (8 ตอน)</p>
         </div>
         
         <div class="episodes-grid">
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">01</div>
-                    <h3 class="episode-title">First Bloom</h3>
+                    <h3 class="episode-title">First Heartbreak</h3>
                 </div>
                 <div class="episode-body">
-                    <p class="episode-date">June 15, 2026</p>
+                    <p class="episode-date">June 24, 2024</p>
                     <p class="episode-desc">
-                        Kan arrives in Chiang Mai and visits the flower market, where she first 
-                        encounters Nari's artwork and the artist herself.
+                        Flashback to Fahlada and Earn's beautiful romance abroad, 
+                        ending with Earn's shocking breakup that leaves Fahlada devastated.
                     </p>
                     <span class="episode-status status-released">Released</span>
                 </div>
@@ -970,13 +951,13 @@
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">02</div>
-                    <h3 class="episode-title">Petals & Patterns</h3>
+                    <h3 class="episode-title">Unexpected Reunion</h3>
                 </div>
                 <div class="episode-body">
-                    <p class="episode-date">June 22, 2026</p>
+                    <p class="episode-date">July 1, 2024</p>
                     <p class="episode-desc">
-                        Kan seeks Nari's help understanding local flora for her designs. 
-                        Their afternoon together sparks an unexpected connection.
+                        Years later, Earn appears as the hospital spokesperson. 
+                        Fahlada must face the woman who broke her heart.
                     </p>
                     <span class="episode-status status-released">Released</span>
                 </div>
@@ -985,13 +966,13 @@
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">03</div>
-                    <h3 class="episode-title">Coffee & Confessions</h3>
+                    <h3 class="episode-title">Secret Desires</h3>
                 </div>
                 <div class="episode-body">
-                    <p class="episode-date">June 29, 2026</p>
+                    <p class="episode-date">July 8, 2024</p>
                     <p class="episode-desc">
-                        At Patch's café, secrets are shared over Thai iced coffee. 
-                        Kan opens up about her dreams and fears.
+                        Earn assumes Fahlada has forgiven her, but the doctor has her own plans. 
+                        Their chemistry becomes undeniable.
                     </p>
                     <span class="episode-status status-released">Released</span>
                 </div>
@@ -1000,45 +981,75 @@
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">04</div>
-                    <h3 class="episode-title">Loy Krathong Nights</h3>
+                    <h3 class="episode-title">Revenge Game</h3>
                 </div>
                 <div class="episode-body">
-                    <p class="episode-date">July 6, 2026</p>
+                    <p class="episode-date">July 15, 2024</p>
                     <p class="episode-desc">
-                        During the festival of lights, Nari and Kan float their wishes together. 
-                        Under the lantern-lit sky, feelings can no longer be ignored.
+                        Fahlada reveals her plan to make Earn feel the pain she endured. 
+                        But playing with fire might burn them both.
                     </p>
-                    <span class="episode-status status-soon">Coming Soon</span>
+                    <span class="episode-status status-released">Released</span>
                 </div>
             </div>
             
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">05</div>
-                    <h3 class="episode-title">Monsoon Hearts</h3>
+                    <h3 class="episode-title">True Feelings</h3>
                 </div>
                 <div class="episode-body">
-                    <p class="episode-date">July 13, 2026</p>
+                    <p class="episode-date">July 22, 2024</p>
                     <p class="episode-desc">
-                        Rainy season brings them closer as they shelter from the storm together. 
-                        But outside forces threaten their budding romance.
+                        Beneath the revenge game, real feelings resurface. 
+                        Both women struggle with their complicated emotions.
                     </p>
-                    <span class="episode-status status-upcoming">Upcoming</span>
+                    <span class="episode-status status-released">Released</span>
                 </div>
             </div>
             
             <div class="episode-card">
                 <div class="episode-header">
                     <div class="episode-number">06</div>
-                    <h3 class="episode-title">Colors of Truth</h3>
+                    <h3 class="episode-title">Family Secrets</h3>
                 </div>
                 <div class="episode-body">
-                    <p class="episode-date">July 20, 2026</p>
+                    <p class="episode-date">July 29, 2024</p>
                     <p class="episode-desc">
-                        Kan's collection is complete, but Nari's painting holds a secret. 
-                        Will their colors blend or clash forever?
+                        Fahlada's mother falls ill, forcing her to confront family expectations 
+                        and her relationship with Earn.
                     </p>
-                    <span class="episode-status status-upcoming">Upcoming</span>
+                    <span class="episode-status status-released">Released</span>
+                </div>
+            </div>
+            
+            <div class="episode-card">
+                <div class="episode-header">
+                    <div class="episode-number">07</div>
+                    <h3 class="episode-title">Acceptance</h3>
+                </div>
+                <div class="episode-body">
+                    <p class="episode-date">August 5, 2024</p>
+                    <p class="episode-desc">
+                        Fahlada's father encourages her to follow her heart. 
+                        Earn proves her love is real and lasting.
+                    </p>
+                    <span class="episode-status status-released">Released</span>
+                </div>
+            </div>
+            
+            <div class="episode-card">
+                <div class="episode-header">
+                    <div class="episode-number">08</div>
+                    <h3 class="episode-title">The Secret of Us</h3>
+                </div>
+                <div class="episode-body">
+                    <p class="episode-date">August 12, 2024</p>
+                    <p class="episode-desc">
+                        The emotional finale where love conquers all. 
+                        Fahlada and Earn finally find their happy ending together.
+                    </p>
+                    <span class="episode-status status-released">Released</span>
                 </div>
             </div>
         </div>
@@ -1054,46 +1065,46 @@
         <div class="themes-grid">
             <div class="theme-card">
                 <div class="theme-icon">💕</div>
-                <h3 class="theme-title">Love & Identity</h3>
+                <h3 class="theme-title">Second Chance Love</h3>
                 <p class="theme-desc">
-                    Discovering who you are through the courage to love authentically, 
-                    navigating same-sex love in modern Thailand.
+                    Two former lovers reunite years after a painful breakup, 
+                    discovering if love can truly heal old wounds.
                 </p>
             </div>
             
             <div class="theme-card">
-                <div class="theme-icon">🏔️</div>
-                <h3 class="theme-title">Cultural Contrast</h3>
+                <div class="theme-icon">💔</div>
+                <h3 class="theme-title">Heartbreak & Healing</h3>
                 <p class="theme-desc">
-                    The beauty of traditional northern Thailand meets cosmopolitan Bangkok, 
-                    showing how different worlds can create harmony.
+                    Exploring the depths of emotional pain and the journey 
+                    toward forgiveness and understanding.
                 </p>
             </div>
             
             <div class="theme-card">
-                <div class="theme-icon">🎨</div>
-                <h3 class="theme-title">Art & Creativity</h3>
+                <div class="theme-icon">🏥</div>
+                <h3 class="theme-title">Medical Drama</h3>
                 <p class="theme-desc">
-                    Botanical illustration meets fashion design, where artistic passion 
-                    becomes the bridge between two hearts.
+                    Set in a prestigious hospital, blending romance with 
+                    the high-stakes world of medicine.
                 </p>
             </div>
             
             <div class="theme-card">
                 <div class="theme-icon">👨‍👩‍👧</div>
-                <h3 class="theme-title">Family & Acceptance</h3>
+                <h3 class="theme-title">Family Acceptance</h3>
                 <p class="theme-desc">
-                    The challenges and triumphs of coming out, seeking understanding, 
-                    and finding acceptance in unexpected places.
+                    Navigating family expectations and the journey 
+                    toward acceptance and understanding.
                 </p>
             </div>
             
             <div class="theme-card">
-                <div class="theme-icon">🌿</div>
-                <h3 class="theme-title">Nature & Beauty</h3>
+                <div class="theme-icon">🎭</div>
+                <h3 class="theme-title">Revenge & Redemption</h3>
                 <p class="theme-desc">
-                    Chiang Mai's lush landscapes serve as more than backdrop—they mirror 
-                    the characters' inner growth and blooming love.
+                    The complex dance between seeking revenge and 
+                    finding redemption through love.
                 </p>
             </div>
             
@@ -1101,48 +1112,47 @@
                 <div class="theme-icon">✨</div>
                 <h3 class="theme-title">Self-Discovery</h3>
                 <p class="theme-desc">
-                    Each character embarks on their own journey of understanding, 
-                    finding strength in vulnerability and truth.
+                    Both characters learn about themselves and what 
+                    they truly want from life and love.
                 </p>
             </div>
         </div>
     </section>
     
-    <!-- Artists Section -->
-    <section class="artists" id="artists">
+    <!-- Cast Section -->
+    <section class="cast" id="cast">
         <div class="section-title">
-            <h2>Artist Names</h2>
-            <p class="thai-subtitle">ชื่อนักเขียน</p>
+            <h2>Supporting Cast</h2>
+            <p class="thai-subtitle">นักแสดงสมทบ</p>
         </div>
         
-        <div class="artists-grid">
-            <div class="artist-card">
-                <div class="artist-avatar">🌺</div>
-                <h3 class="artist-name">PloyChompoo</h3>
-                <p class="artist-thai">พลอยชมพู</p>
-                <p class="artist-role">Main Illustrator & Story Creator</p>
+        <div class="cast-grid">
+            <div class="cast-card">
+                <div class="cast-avatar">👩‍⚕️</div>
+                <h3 class="cast-name">Eclair Chatsak</h3>
+                <p class="cast-thai">เอสเคลอร์</p>
+                <p class="cast-role">饰演 Susi</p>
             </div>
             
-            <div class="artist-card">
-                <div class="artist-avatar">🐱</div>
-                <h3 class="artist-name">MaliMaeo</h3>
-                <p class="artist-thai">มะลิแมว</p>
-                <p class="artist-role">Character Designer</p>
+            <div class="cast-card">
+                <div class="cast-avatar">👨‍⚕️</div>
+                <h3 class="cast-name">Phuthares Rattanawong</h3>
+                <p class="cast-thai">พุธares</p>
+                <p class="cast-role">饰演 Fahlada's Father</p>
             </div>
             
-            <div class="artist-card">
-                <div class="artist-avatar">🐦</div>
-                <h3 class="artist-name">DaoNok</h3>
-                <p class="artist-thai">ดาวนก</p>
-                <p class="artist-role">Background Artist</p>
+            <div class="cast-card">
+                <div class="cast-avatar">👩</div>
+                <h3 class="cast-name">Russamee Thananusak</h3>
+                <p class="cast-thai">รุ่งศรี</p>
+                <p class="cast-role">饰演 Fahlada's Mother</p>
             </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 4rem;">
-            <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem;">Studio Name</h3>
-            <div style="background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%); display: inline-block; padding: 1.5rem 3rem; border-radius: 15px;">
-                <p style="font-size: 1.5rem; font-weight: 600; color: var(--text-dark);">🌸 Siam Lotus Studio</p>
-                <p style="font-family: 'Sarabun', sans-serif; font-size: 1.2rem; color: var(--text-dark);">สตูดิโอบัวไทย</p>
+            
+            <div class="cast-card">
+                <div class="cast-avatar">👨</div>
+                <h3 class="cast-name">Supporting Cast</h3>
+                <p class="cast-thai">นักแสดงเพิ่มเติม</p>
+                <p class="cast-role">Various Roles</p>
             </div>
         </div>
     </section>
@@ -1156,37 +1166,37 @@
         
         <div class="gallery-grid">
             <div class="gallery-item">
-                <div class="gallery-item-content">🌸🌺🌷</div>
+                <div class="gallery-item-content">💕👩‍❤️‍👩</div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-content">👗</div>
+                <div class="gallery-item-content">🏥</div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-item-content">🎨</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">☕</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-content">🏔️🌅</div>
+                <div class="gallery-item-content">💔</div>
             </div>
             <div class="gallery-item">
                 <div class="gallery-item-content">✨</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">🎭💋</div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-item-content">🌸</div>
             </div>
         </div>
     </section>
     
     <!-- Community Section -->
     <section class="community" id="community">
-        <h2>Join Our Community</h2>
-        <p>Connect with fans worldwide and share your love for the series!</p>
+        <h2>Join the LingOrm Fandom</h2>
+        <p>Connect with fans worldwide and share your love for The Secret of Us!</p>
         
         <div class="social-links">
             <a href="#" class="social-link">💬 Discord</a>
             <a href="#" class="social-link">📸 Instagram</a>
-            <a href="#" class="social-link">🐦 Twitter</a>
+            <a href="#" class="social-link">🐦 Twitter/X</a>
             <a href="#" class="social-link">📺 YouTube</a>
-            <a href="#" class="social-link">📝 Blog</a>
+            <a href="#" class="social-link">📝 TikTok</a>
         </div>
     </section>
     
@@ -1195,32 +1205,33 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>About the Series</h4>
-                <p>A Thai Girls' Love web series celebrating love, art, and cultural beauty set in the heart of Chiang Mai.</p>
+                <p>The Secret of Us (ใจซ่อนรัก) is a 2024 Thai GL drama series produced by Channel 3 Thailand, starring Lingling Kwong and Orm Kornnaphat.</p>
             </div>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <a href="#home">Home</a>
-                <a href="#characters">Characters</a>
-                <a href="#episodes">Episodes</a>
                 <a href="#artists">Artists</a>
+                <a href="#episodes">Episodes</a>
+                <a href="#cast">Cast</a>
             </div>
             <div class="footer-section">
-                <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Copyright Info</a>
+                <h4>Watch On</h4>
+                <a href="#">Channel 3</a>
+                <a href="#">Netflix</a>
+                <a href="#">YouTube</a>
+                <a href="#">ch3+</a>
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>📧 hello@siamlotusstudio.com</p>
-                <p>🌐 www.siamlotusstudio.com</p>
+                <p>📧 fan@secretofus.com</p>
+                <p>🌐 www.ch3thailand.com</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>© 2026 Siam Lotus Studio. All rights reserved.</p>
+            <p>© 2024 Channel 3 Thailand. All rights reserved.</p>
             <p class="footer-thai">สร้างด้วยความรักจากประเทศไทย 💕</p>
-            <p class="footer-thai">Made with love from Thailand</p>
+            <p class="footer-thai">#ใจซ่อนรัก #LingOrm #TheSecretOfUs</p>
         </div>
     </footer>
 </body>
